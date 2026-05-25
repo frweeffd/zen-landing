@@ -3,36 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZEN // THE NEXT-GEN CLASSROOM MATRIX</title>
+    <title>ZEN // THE CLASSROOM ORCHESTRATION PLATFORM</title>
     <style>
-        body { background-color: #030712; color: #10b981; font-family: monospace; margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; box-sizing: border-box; }
-        .showcase-container { max-width: 600px; width: 100%; background: rgba(11, 19, 41, 0.95); border: 2px solid #10b981; border-radius: 8px; padding: 30px; box-shadow: 0 0 25px rgba(16, 185, 129, 0.25); box-sizing: border-box; }
-        h1 { font-size: 28px; letter-spacing: 2px; text-transform: uppercase; margin: 0 0 15px 0; text-align: center; border-bottom: 2px dashed #10b981; padding-bottom: 15px; }
-        h3 { color: #f59e0b; text-transform: uppercase; margin-top: 25px; letter-spacing: 1px; }
-        p { line-height: 1.6; font-size: 14px; color: #94a3b8; text-align: left; }
-        .feature-tag { color: #10b981; font-weight: bold; }
-        .download-vault { margin-top: 35px; background: #020617; border: 1px dashed #f59e0b; padding: 20px; border-radius: 4px; text-align: center; position: relative; }
-        .status-badge { background: #f59e0b; color: #020617; font-weight: bold; font-size: 11px; padding: 4px 8px; border-radius: 3px; letter-spacing: 1px; text-transform: uppercase; display: inline-block; margin-bottom: 10px; }
-        .dl-btn-disabled { background: #334155; color: #64748b; font-family: monospace; font-weight: bold; padding: 12px 24px; border-radius: 4px; border: none; font-size: 13px; letter-spacing: 1px; cursor: not-allowed; text-transform: uppercase; width: 100%; box-sizing: border-box; }
+        body { background-color: #020617; color: #10b981; font-family: monospace; margin: 0; padding: 0; min-height: 100vh; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; }
+        header { width: 100%; max-width: 700px; padding: 30px 20px; box-sizing: border-box; text-align: center; border-bottom: 2px dashed #10b981; margin-bottom: 30px; }
+        h1 { font-size: 32px; letter-spacing: 3px; text-transform: uppercase; margin: 0; text-shadow: 0 0 15px rgba(16, 185, 129, 0.4); }
+        .sub-tag { color: #64748b; font-size: 12px; margin-top: 5px; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .main-wrapper { max-width: 700px; width: 100%; padding: 0 20px 40px 20px; box-sizing: border-box; display: flex; flex-direction: column; gap: 30px; }
+        .section-card { background: rgba(11, 19, 41, 0.9); border: 2px solid #10b981; border-radius: 8px; padding: 25px; box-shadow: 0 0 20px rgba(16, 185, 129, 0.15); box-sizing: border-box; }
+        
+        h2 { font-size: 18px; color: #f59e0b; text-transform: uppercase; margin-top: 0; margin-bottom: 15px; letter-spacing: 1px; border-left: 4px solid #f59e0b; padding-left: 10px; }
+        p { line-height: 1.6; font-size: 14px; color: #94a3b8; margin: 0 0 15px 0; }
+        .bullet-row { margin-bottom: 12px; display: flex; align-items: flex-start; font-size: 13px; color: #cbd5e1; }
+        .bullet-tag { color: #10b981; font-weight: bold; min-width: 140px; display: inline-block; }
+        
+        /* 📊 OVERALL ECOSYSTEM METRIC PROGRESS BAR */
+        .progress-container { margin: 25px 0 15px 0; background: #020617; border: 1px solid #334155; border-radius: 4px; height: 26px; position: relative; overflow: hidden; display: flex; align-items: center; }
+        .progress-fill { background: linear-gradient(90deg, #b45309 0%, #f59e0b 100%); width: 30%; height: 100%; animation: pulseFill 2.5s infinite ease-in-out; }
+        .progress-text { position: absolute; width: 100%; text-align: center; font-weight: bold; font-size: 11px; color: #fff; z-index: 5; font-family: monospace; letter-spacing: 1px; text-shadow: 1px 1px 2px #000; }
+        @keyframes pulseFill { 0%, 100% { opacity: 0.9; } 50% { opacity: 1; filter: brightness(1.15); } }
+        
+        .status-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 15px; background: #020617; padding: 15px; border: 1px dashed #334155; border-radius: 4px; }
+        .status-item { font-size: 12px; color: #cbd5e1; display: flex; align-items: center; }
+        .status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; shrink: 0; }
+        
+        .download-vault { background: #020617; border: 1px dashed #f59e0b; padding: 20px; border-radius: 4px; text-align: center; }
+        .status-badge { background: #f59e0b; color: #020617; font-weight: bold; font-size: 11px; padding: 4px 8px; border-radius: 3px; letter-spacing: 1px; text-transform: uppercase; display: inline-block; margin-bottom: 12px; }
+        .dl-btn-disabled { background: #334155; color: #64748b; font-family: monospace; font-weight: bold; padding: 12px 24px; border-radius: 4px; border: none; font-size: 13px; letter-spacing: 1px; cursor: not-allowed; text-transform: uppercase; width: 100%; max-width: 320px; }
     </style>
 </head>
 <body>
 
-<div class="showcase-container">
+<header>
     <h1>PROJECT // ZEN SYSTEM</h1>
-    <p>Zen is a next-generation network architecture designed to seamlessly bridge teacher consoles with student devices. It completely eliminates classroom distractions while establishing secure, real-time telemetry pipelines across local infrastructure [INDEX_0].</p>
-    
-    <h3>🔒 Core Specifications & Modules</h3>
-    <p><span class="feature-tag">[01] TELEMETRY MATRIX:</span> Continuous real-time data sync loops connecting dashboard frames over wireless protocols [INDEX_0].</p>
-    <p><span class="feature-tag">[02] INTERFACE SHIELD:</span> Multi-layered system state checks that secure local boundaries instantly.</p>
-    <p><span class="feature-tag">[03] NAPTIME MODE:</span> A hardware-synchronized isolation parameter designed to cleanly secure device focal boundaries.</p>
-    
-    <h3>📱 Deployment Distribution Hub</h3>
-    <div class="download-vault">
-        <div class="status-badge">⚙️ PIPELINE STATUS: COMING SOON</div>
-        <p style="font-size: 12px; margin: 0 0 15px 0; text-align: center; color: #64748b;">The native standalone Android client binary (APK) is currently being compiled inside isolated platform builds [INDEX_0].</p>
-        <button class="dl-btn-disabled" disabled>DOWNLOAD CLIENT (.APK)</button>
+    <div class="sub-tag">Secure Classroom Orchestration Matrix // Hub</div>
+</header>
+
+<div class="main-wrapper">
+
+    <!-- AREA 1: GLOBAL MISSION & GOALS -->
+    <div class="section-card">
+        <h2>01 // Global Ecosystem Strategy</h2>
+        <p>Zen is engineered to fundamentally redefine technology orchestration within modern academic spaces. By bypassing external web cloud layers and operating strictly inside localized infrastructure frameworks, Zen establishes a highly resilient security boundary that shields student terminals from digital distractions while arming educators with unmatched operational overview controls [INDEX_0].</p>
+        <p>The ultimate macro objective is to scale Zen into a lightweight, school-wide ecosystem deployment framework. It will install with zero expensive server overhead and operate completely lag-free across standard campus network frequencies, protecting digital environments at scale.</p>
     </div>
+
+    <!-- AREA 2: PROJECT ROADMAP & PROGRESS BAR -->
+    <div class="section-card">
+        <h2>02 // Long-Term Development Status</h2>
+        <p>Tracking overall project velocity across the enterprise roadmap. The foundational core is fully established, paving the way for network-wide device scaling pipelines.</p>
+        
+        <div class="progress-container">
+            <div class="progress-fill"></div>
+            <div class="progress-text">30% ECOSYSTEM BLUEPRINTS LOCKED</div>
+        </div>
+        
+        <div class="status-grid">
+            <div class="status-item"><span class="status-dot" style="background:#10b981;"></span>[COMPLETE] Core Architecture Design</div>
+            <div class="status-item"><span class="status-dot" style="background:#10b981;"></span>[COMPLETE] Admin Dashboard Interface</div>
+            <div class="status-item"><span class="status-dot" style="background:#f59e0b;"></span>[IN DEV] Cross-Device Sync Syncing</div>
+            <div class="status-item"><span class="status-dot" style="background:#64748b;"></span>[UPCOMING] Multi-Node Campus Stress Testing</div>
+            <div class="status-item"><span class="status-dot" style="background:#64748b;"></span>[UPCOMING] Native Client Application Shells</div>
+            <div class="status-item"><span class="status-dot" style="background:#64748b;"></span>[UPCOMING] District-Wide Administrative Pitch</div>
+        </div>
+    </div>
+
+    <!-- AREA 3: CHRONOLOGICAL PROJECT LEDGER -->
+    <div class="section-card">
+        <h2>03 // System Release History</h2>
+        <div class="bullet-row">
+            <span class="bullet-tag">[v1.8 RELEASE]</span>
+            <span>Completed dashboard form validation sweep. Form parameters and input selectors are hard-coded directly to local memory sectors. Created an active system capsule snapshot backup container [INDEX_0, INDEX_1].</span>
+        </div>
+        <div class="bullet-row" style="margin-top: 15px;">
+            <span class="bullet-tag">[v1.5 RELEASE]</span>
+            <span>Provisioned initial express backend networking core paths. Set rolling data logging telemetry channels to verify socket packets [INDEX_0].</span>
+        </div>
+    </div>
+
+    <!-- AREA 4: APPLICATION DISTRIBUTION HUB -->
+    <div class="section-card">
+        <h2>04 // Production Distribution Hub</h2>
+        <div class="download-vault">
+            <div class="status-badge">⚙️ PIPELINE STATUS: COMING SOON</div>
+            <p style="font-size: 12px; margin: 0 0 15px 0; text-align: center; color: #64748b;">The native standalone client client application shell is undergoing security checks within isolated environment compiler structures.</p>
+            <button class="dl-btn-disabled" disabled>DOWNLOAD CLIENT (.APK)</button>
+        </div>
+    </div>
+
 </div>
 
 </body>
