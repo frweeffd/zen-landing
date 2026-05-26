@@ -2,160 +2,94 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zen Launcher</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>System Maintenance</title>
     <style>
-        /* 1. THE LASER LIGHTNING CURTAIN OVERLAY */
-        #splash-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: #0b0c10;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 99999; /* Higher than everything else */
-            animation: fadeOutOverlay 0.4s ease-in-out forwards;
-            animation-delay: 2.5s; /* Plays for 2.5 seconds, then lifts */
-        }
-
-        .neon-z {
-            width: 200px;
-            height: 200px;
-            stroke-dasharray: 600;
-            stroke-dashoffset: 600;
-            animation: drawZ 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-            filter: drop-shadow(0 0 8px #00d2ff);
-        }
-
-        .lightning-bolt {
-            stroke: #ffffff;
-            stroke-width: 3;
-            fill: none;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            opacity: 0;
-            filter: drop-shadow(0 0 4px #00d2ff) drop-shadow(0 0 12px #7209b7);
-            animation: lightningZap 0.4s linear infinite;
-        }
-
-        .bolt-1 { animation-delay: 1.1s; }
-        .bolt-2 { animation-delay: 1.3s; }
-
-        @keyframes drawZ { to { stroke-dashoffset: 0; } }
-        @keyframes fadeOutOverlay { to { opacity: 0; visibility: hidden; pointer-events: none; } }
-        @keyframes lightningZap {
-            0%, 100% { opacity: 0; transform: scale(0.95); }
-            5% { opacity: 1; transform: scale(1.02) skewX(2deg); }
-            10% { opacity: 0; }
-            15% { opacity: 0.8; transform: scale(0.98) skewY(-1deg); }
-            20% { opacity: 0; }
-            50% { opacity: 0.9; transform: scale(1.05) rotate(1deg); }
-            55% { opacity: 0; }
-        }
-
-        /* ========================================================== */
-        /* PASTED ORIGINAL CORE BLUEPRINTS (YOUR EXACT ROADMAP STYLE) */
-        /* ========================================================== */
-        body {
-            margin: 0;
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+        
+        body { 
+            background: #0a0b10; 
+            color: #ffffff; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
             padding: 20px;
-            background-color: #030a10;
-            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .maintenance-container { 
+            background: #141621; 
+            padding: 40px 30px; 
+            border-radius: 20px; 
+            border: 2px solid #1f2335; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6); 
+            width: 100%; 
+            max-width: 450px; 
+            text-align: center; 
+        }
+
+        .icon-gear {
+            font-size: 65px;
+            color: #f7768e;
+            text-shadow: 0 0 20px rgba(247, 118, 142, 0.4);
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: spin 4s linear infinite;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        h1 { 
+            font-size: 26px; 
+            font-weight: 700; 
+            letter-spacing: 1px; 
             color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .roadmap-card {
-            width: 90%;
-            max-width: 500px;
-            border: 2px solid #00d2ff;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 15px 0;
-            background-color: #061320;
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
-        }
-
-        .card-header {
-            color: #ff9f1c;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border-left: 4px solid #ff9f1c;
-            padding-left: 10px;
+            margin-bottom: 12px;
             text-transform: uppercase;
-            margin-bottom: 15px;
         }
 
-        .progress-bar-container {
-            width: 100%;
-            background-color: #102a45;
-            border-radius: 4px;
-            margin: 15px 0;
-            overflow: hidden;
+        p { 
+            color: #a9b1d6; 
+            font-size: 16px; 
+            line-height: 1.6;
+            margin-bottom: 25px;
         }
 
-        .progress-bar-fill {
-            width: 15%;
-            background: linear-gradient(90deg, #ff9f1c, #ff6b6b);
-            color: white;
-            padding: 3px 0;
-            text-align: center;
-            font-size: 0.8rem;
-            font-weight: bold;
+        .status-badge {
+            display: inline-block;
+            background: rgba(247, 118, 142, 0.1);
+            color: #f7768e;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: 1px solid rgba(247, 118, 142, 0.2);
+            margin-bottom: 30px;
         }
 
-        ul { list-style-type: none; padding-left: 5px; }
-        li { margin: 12px 0; font-size: 0.95rem; display: flex; align-items: flex-start; }
-        .dot { height: 8px; width: 8px; border-radius: 50%; display: inline-block; margin-right: 12px; margin-top: 6px; }
-        .dot-complete { background-color: #00f5d4; box-shadow: 0 0 8px #00f5d4; }
-        .dot-dev { background-color: #ff9f1c; box-shadow: 0 0 8px #ff9f1c; }
-        .dot-upcoming { background-color: #a2a2a2; }
-        .text-muted { color: #88a0b5; }
+        .footer-text {
+            font-size: 12px;
+            color: #565f89;
+            letter-spacing: 0.5px;
+            border-top: 1px solid #1f2335;
+            padding-top: 20px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
 
-    <!-- THE ANIMATION CURTAIN COATING LAYER -->
-    <div id="splash-screen">
-        <svg width="250" height="250" viewBox="0 0 100 100" xmlns="http://w3.org">
-            <path class="neon-z" d="M25,25 L75,25 L25,75 L75,75" fill="none" stroke="#00d2ff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-            <path class="lightning-bolt bolt-1" d="M75,25 L85,15 L78,12 L90,2" />
-            <path class="lightning-bolt bolt-2" d="M25,75 L15,85 L22,88 L8,98" />
-        </svg>
-    </div>
-
-    <!-- ========================================================== -->
-    <!-- RESTORED LOCAL HARDWARE NODE ROADMAP INTERFACE CHASSIS     -->
-    <!-- ========================================================== -->
-    
-    <!-- CARD 02 -->
-    <div class="roadmap-card">
-        <div class="card-header">02 // ENTERPRISE INTEGRATION ROADMAP</div>
-        <p class="text-muted">Tracking high-level operational deployment metrics across public utilities, civil safety links, and academic environments.</p>
-        
-        <div class="progress-bar-container">
-            <div class="progress-bar-fill">15% REGIONAL CORE ARCHITECTURE SECURED</div>
-        </div>
-
-        <ul>
-            <li><span class="dot dot-complete"></span><div>[COMPLETE] baseline Node Local Core & Admin Interfaces</div></li>
-            <li><span class="dot dot-dev"></span><div>[IN DEV] Cross-Device Wireless Sync & Telemetry Loops</div></li>
-            <li><span class="dot dot-upcoming"></span><div class="text-muted">[UPCOMING] Encrypted Mobile Telemetry Bridges for Law Enforcement</div></li>
-            <li><span class="dot dot-upcoming"></span><div class="text-muted">[UPCOMING] Offline Hardened SCADA Node Verification for Public Utilities</div></li>
-            <li><span class="dot dot-upcoming"></span><div class="text-muted">[UPCOMING] Multi-Agency District Stress Testing and Pilot Rollout</div></li>
-        </ul>
-    </div>
-
-    <!-- CARD 03 -->
-    <div class="roadmap-card">
-        <div class="card-header">03 // MULTI-SECTOR OPERATIONS MODEL</div>
-        <p class="text-muted">Analyzing regional sync models across active nodes.</p>
-    </div>
+<div class="maintenance-container">
+    <div class="icon-gear">⚙️</div>
+    <h1>Under Maintenance</h1>
+    <div class="status-badge">Offline for Updates</div>
+    <p>We are currently updating our database clusters and tuning pipeline configurations to improve system defenses. We will be back online shortly.</p>
+    <div class="footer-text">ZEN CORE INFRASTRUCTURE • OVER-THE-AIR UPDATE</div>
+</div>
 
 </body>
 </html>
