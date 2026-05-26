@@ -3,109 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZEN // THE REGIONAL INFRASTRUCTURE MATRIX</title>
+    <title>Zen Launcher - Lightning Edition</title>
     <style>
-        body { background-color: #020617; color: #10b981; font-family: monospace; margin: 0; padding: 0; min-height: 100vh; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; }
-        header { width: 100%; max-width: 700px; padding: 30px 20px; box-sizing: border-box; text-align: center; border-bottom: 2px dashed #10b981; margin-bottom: 30px; }
-        h1 { font-size: 32px; letter-spacing: 3px; text-transform: uppercase; margin: 0; text-shadow: 0 0 15px rgba(16, 185, 129, 0.4); }
-        .sub-tag { color: #64748b; font-size: 11px; margin-top: 5px; text-transform: uppercase; letter-spacing: 1px; }
-        
-        .main-wrapper { max-width: 700px; width: 100%; padding: 0 20px 40px 20px; box-sizing: border-box; display: flex; flex-direction: column; gap: 30px; }
-        .section-card { background: rgba(11, 19, 41, 0.9); border: 2px solid #10b981; border-radius: 8px; padding: 25px; box-shadow: 0 0 20px rgba(16, 185, 129, 0.15); box-sizing: border-box; }
-        
-        h2 { font-size: 17px; color: #f59e0b; text-transform: uppercase; margin-top: 0; margin-bottom: 15px; letter-spacing: 1px; border-left: 4px solid #f59e0b; padding-left: 10px; }
-        p { line-height: 1.6; font-size: 14px; color: #94a3b8; margin: 0 0 15px 0; }
-        .bullet-row { margin-bottom: 12px; display: flex; align-items: flex-start; font-size: 13px; color: #cbd5e1; }
-        .bullet-tag { color: #10b981; font-weight: bold; min-width: 150px; display: inline-block; shrink: 0; }
-        
-        .progress-container { margin: 25px 0 15px 0; background: #020617; border: 1px solid #334155; border-radius: 4px; height: 26px; position: relative; overflow: hidden; display: flex; align-items: center; }
-        .progress-fill { background: linear-gradient(90deg, #7c2d12 0%, #b45309 100%); width: 15%; height: 100%; animation: pulseFill 2.5s infinite ease-in-out; }
-        .progress-text { position: absolute; width: 100%; text-align: center; font-weight: bold; font-size: 11px; color: #fff; z-index: 5; font-family: monospace; letter-spacing: 1px; text-shadow: 1px 1px 2px #000; }
-        @keyframes pulseFill { 0%, 100% { opacity: 0.9; } 50% { opacity: 1; filter: brightness(1.2); } }
-        
-        .status-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 15px; background: #020617; padding: 15px; border: 1px dashed #334155; border-radius: 4px; }
-        .status-item { font-size: 12px; color: #cbd5e1; display: flex; align-items: center; }
-        .status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 10px; shrink: 0; }
-        
-        .download-vault { background: #020617; border: 1px dashed #f59e0b; padding: 20px; border-radius: 4px; text-align: center; }
-        .status-badge { background: #f59e0b; color: #020617; font-weight: bold; font-size: 11px; padding: 4px 8px; border-radius: 3px; letter-spacing: 1px; text-transform: uppercase; display: inline-block; margin-bottom: 12px; }
-        .dl-btn-disabled { background: #334155; color: #64748b; font-family: monospace; font-weight: bold; padding: 12px 24px; border-radius: 4px; border: none; font-size: 13px; letter-spacing: 1px; cursor: not-allowed; text-transform: uppercase; width: 100%; max-width: 320px; }
-        
-        /* 🔒 SECURE SYSTEM AUTHENTICATION FOOTER */
-        .auth-footer { margin-top: 10px; text-align: center; font-size: 11px; color: #475569; display: flex; flex-direction: column; gap: 5px; border-top: 1px dashed #1e293b; padding-top: 20px; width: 100%; }
-        .sig-badge { color: #10b981; font-weight: bold; }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            overflow: hidden;
+        }
+
+        /* 1. THE VOID CONTROLLER */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #0b0c10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: fadeOutOverlay 0.4s ease-in-out forwards;
+            animation-delay: 2.8s;
+        }
+
+        /* 2. THE LASER CORE Z */
+        .neon-z {
+            width: 200px;
+            height: 200px;
+            stroke-dasharray: 600;
+            stroke-dashoffset: 600;
+            animation: drawZ 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            filter: drop-shadow(0 0 8px #00d2ff);
+        }
+
+        /* 3. HIGH-VOLTAGE LIGHTNING FRACTIONAL PATHS */
+        .lightning-bolt {
+            stroke: #ffffff;
+            stroke-width: 3;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            opacity: 0;
+            filter: drop-shadow(0 0 4px #00d2ff) drop-shadow(0 0 12px #7209b7);
+            /* Triggers immediate chaotic discharge loops */
+            animation: lightningZap 0.4s linear infinite;
+        }
+
+        /* Staggering the bolts so they spark at different fractions of a second */
+        .bolt-1 { animation-delay: 1.1s; }
+        .bolt-2 { animation-delay: 1.3s; }
+        .bolt-3 { animation-delay: 1.5s; }
+
+        /* 4. PHYSICS KEYFRAME MATRICES */
+        @keyframes drawZ {
+            to { stroke-dashoffset: 0; }
+        }
+
+        @keyframes lightningZap {
+            0%, 100% { opacity: 0; transform: scale(0.95); }
+            5% { opacity: 1; transform: scale(1.02) skewX(2deg); }
+            10% { opacity: 0; }
+            15% { opacity: 0.8; transform: scale(0.98) skewY(-1deg); }
+            20% { opacity: 0; }
+            50% { opacity: 0.9; transform: scale(1.05) rotate(1deg); }
+            55% { opacity: 0; }
+        }
+
+        @keyframes fadeOutOverlay {
+            to { opacity: 0; visibility: hidden; }
+        }
+
+        .main-content {
+            padding: 40px;
+            color: #ffffff;
+            text-align: center;
+            margin-top: 25vh;
+        }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>PROJECT // ZEN MATRIX</h1>
-    <div class="sub-tag">Integrated Regional & Municipal Infrastructure Security Hub</div>
-</header>
-
-<div class="main-wrapper">
-
-    <!-- AREA 1: GLOBAL MISSION -->
-    <div class="section-card">
-        <h2>01 // Comprehensive Ecosystem Strategy</h2>
-        <p>Zen is an advanced, ultra-secure telemetry orchestration matrix designed to link municipal public safety assets, first responder networks, local utility hubs, and school system terminals into a single resilient, unified local network topology [INDEX_0].</p>
-        <p>By discarding all dependence on external commercial cloud layers, Zen establishes an airtight defensive perimeter that isolates mission-critical hardware fields from public routing interception while maintaining instantaneous cross-agency data syncing streams [INDEX_0].</p>
+    <!-- THE HIGH-VOLTAGE SPLASH LAYER -->
+    <div id="splash-screen">
+        <svg width="300" height="300" viewBox="0 0 100 100" xmlns="http://w3.org">
+            <!-- Central Power Core Line -->
+            <path class="neon-z" d="M25,25 L75,25 L25,75 L75,75" 
+                  fill="none" stroke="#00d2ff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+            
+            <!-- Electrical Fractures (Sparks jumping off the points) -->
+            <path class="lightning-bolt bolt-1" d="M75,25 L85,15 L78,12 L90,2" />
+            <path class="lightning-bolt bolt-2" d="M25,75 L15,85 L22,88 L8,98" />
+            <path class="lightning-bolt bolt-3" d="M50,50 L45,40 L55,35 L48,22" />
+        </svg>
     </div>
 
-    <!-- AREA 2: ROADMAP -->
-    <div class="section-card">
-        <h2>02 // Enterprise Integration Roadmap</h2>
-        <p>Tracking high-level operational deployment metrics across public utilities, civil safety links, and academic environments.</p>
-        
-        <div class="progress-container">
-            <div class="progress-fill"></div>
-            <div class="progress-text">15% REGIONAL CORE ARCHITECTURE SECURED</div>
-        </div>
-        
-        <div class="status-grid">
-            <div class="status-item"><span class="status-dot" style="background:#10b981;"></span>[COMPLETE] baseline Node Local Core & Admin Interfaces</div>
-            <div class="status-item"><span class="status-dot" style="background:#f59e0b;"></span>[IN DEV] Cross-Device Wireless Sync & Telemetry Loops</div>
-            <div class="status-item"><span class="status-dot" style="background:#64748b;"></span>[UPCOMING] Encrypted Mobile Telemetry Bridges for Law Enforcement</div>
-            <div class="status-item"><span class="status-dot" style="background:#64748b;"></span>[UPCOMING] Offline Hardened SCADA Node Verification for Public Utilities</div>
-            <div class="status-item"><span class="status-dot" style="background:#64748b;"></span>[UPCOMING] Multi-Agency District Stress Testing and Pilot Rollout</div>
-        </div>
+    <!-- MAIN INTERFACE DESKTOP CONTENTS -->
+    <div class="main-content">
+        <h1>ZEN CORE ACTIVE</h1>
+        <p>Voltage parameters are stable at maximum discharge limits.</p>
     </div>
-
-    <!-- AREA 3: SECTOR BREAKDOWN -->
-    <div class="section-card">
-        <h2>03 // Multi-Sector Operations Model</h2>
-        <div class="bullet-row">
-            <span class="bullet-tag">[LAW ENFORCEMENT]</span>
-            <span>Securing tactical mobile terminals and dispatch sync lines from external radio loop interception or network packet degradation during emergency operations.</span>
-        </div>
-        <div class="bullet-row" style="margin-top: 15px;">
-            <span class="bullet-tag">[PUBLIC UTILITIES]</span>
-            <span>Establishing localized, cloud-free validation paths for sub-station control grids, shielding physical switchboard assets from digital entry matrices.</span>
-        </div>
-        <div class="bullet-row" style="margin-top: 15px;">
-            <span class="bullet-tag">[ACADEMIC FACILITY]</span>
-            <span>Unlocking real-time classroom orchestration loops, allowing teacher control panels to sync effortlessly with local user screens to clear out data blocks [INDEX_0].</span>
-        </div>
-    </div>
-
-    <!-- AREA 4: DISTRIBUTION HUB -->
-    <div class="section-card">
-        <h2>04 // Operational Distribution Hub</h2>
-        <div class="download-vault">
-            <div class="status-badge">⚙️ PIPELINE STATUS: UNDER BUILD</div>
-            <p style="font-size: 12px; margin: 0 0 15px 0; text-align: center; color: #64748b;">Multi-platform client applications are being provisioned for localized secure system deployment sweeps [INDEX_0].</p>
-            <button class="dl-btn-disabled" disabled>DOWNLOAD CLIENT GATEWAY</button>
-        </div>
-    </div>
-
-    <!-- 🔒 DESIGNER SIGNATURE & PROOF OF OWNERSHIP LICENSE -->
-    <div class="auth-footer">
-        <div>© 2026 ZEN MATRIX SYSTEMS • ALL RIGHTS RESERVED</div>
-        <div>DESIGNED & ENGINEERED BY <span class="sig-badge">FRWEEFFD</span></div>
-        <div style="font-size: 9px; color: #334155;">ORIGINAL REPOSITORY SIGNATURE VERIFICATION KEY: SHA256-NX770X81ZB82</div>
-    </div>
-
-</div>
 
 </body>
 </html>
