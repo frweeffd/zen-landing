@@ -1,63 +1,857 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zen Security Systems // Executive Directory</title>
+
+    <meta name="description"
+        content="Zen Infrastructure Technologies — early-stage research and development focused on safer cities, infrastructure, technology, and human-centered systems.">
+
+    <title>Zen Infrastructure Technologies</title>
+
     <style>
+        :root {
+            --bg: #070b12;
+            --panel: #0d1420;
+            --panel-light: #111b2a;
+            --green: #00ff66;
+            --green-soft: #00c853;
+            --text: #f4f7f5;
+            --muted: #9aa6b5;
+            --border: rgba(0, 255, 102, 0.25);
+            --danger: #ff5252;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background-color: #0b0f19;
-            color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            font-family:
+                "Segoe UI",
+                Tahoma,
+                Geneva,
+                Verdana,
+                sans-serif;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 18px 7%;
+
+            background: rgba(7, 11, 18, 0.92);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(12px);
+        }
+
+        .logo {
+            color: var(--green);
+            font-weight: 800;
+            letter-spacing: 2px;
+            font-size: 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            transition: 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--green);
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 88vh;
+
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        .container {
+
             text-align: center;
-            max-width: 600px;
-            border: 2px solid #00ff66;
-            border-radius: 8px;
-            padding: 40px 30px;
-            background-color: #111827;
-            box-shadow: 0 0 20px rgba(0, 255, 102, 0.15);
+            padding: 80px 20px;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(0, 255, 102, 0.08),
+                    transparent 45%
+                );
         }
-        h1 {
-            color: #00ff66;
-            font-size: 2rem;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .status {
+            display: inline-block;
+
+            padding: 7px 15px;
+            margin-bottom: 25px;
+
+            border: 1px solid var(--border);
+            border-radius: 999px;
+
+            color: var(--green);
+            background: rgba(0, 255, 102, 0.05);
+
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
         }
-        p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #9ca3af;
-            margin-bottom: 30px;
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 7vw, 5.5rem);
+            line-height: 1.05;
+            margin-bottom: 20px;
+
+            letter-spacing: -2px;
         }
-        .signature {
-            border-top: 1px solid #1f2937;
-            padding-top: 20px;
-            color: #00ff66;
-            font-weight: bold;
+
+        .hero h1 span {
+            color: var(--green);
+        }
+
+        .hero h2 {
+            color: var(--muted);
+            font-size: clamp(1rem, 2vw, 1.35rem);
+            font-weight: 400;
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            padding: 13px 24px;
+
+            border-radius: 6px;
+            border: 1px solid var(--green);
+
+            font-weight: 700;
+
+            transition: 0.2s ease;
+        }
+
+        .button.primary {
+            background: var(--green);
+            color: #06100a;
+        }
+
+        .button.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(0, 255, 102, 0.25);
+        }
+
+        .button.secondary {
+            color: var(--green);
+            background: transparent;
+        }
+
+        .button.secondary:hover {
+            background: rgba(0, 255, 102, 0.08);
+        }
+
+        /* GENERAL */
+
+        section {
+            padding: 90px 7%;
+        }
+
+        .section-title {
+            max-width: 800px;
+            margin: 0 auto 50px;
+            text-align: center;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+        }
+
+        .section-title h2 span {
+            color: var(--green);
+        }
+
+        .section-title p {
+            color: var(--muted);
+        }
+
+        /* ABOUT */
+
+        .about {
+            background: #090f18;
+        }
+
+        .about-grid {
+            max-width: 1050px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            padding: 30px;
+
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+
+        .card h3 {
+            color: var(--green);
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: var(--muted);
+        }
+
+        /* STATUS */
+
+        .status-section {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .status-card {
+            padding: 28px;
+
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+
+        .status-label {
+            display: inline-block;
+
+            padding: 4px 10px;
+            margin-bottom: 15px;
+
+            border-radius: 5px;
+
+            font-size: 0.7rem;
+            font-weight: 800;
             letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .now {
+            color: var(--green);
+            background: rgba(0, 255, 102, 0.1);
+        }
+
+        .next {
+            color: #ffd54f;
+            background: rgba(255, 213, 79, 0.1);
+        }
+
+        .future {
+            color: #90caf9;
+            background: rgba(144, 202, 249, 0.1);
+        }
+
+        .status-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .status-card p {
+            color: var(--muted);
+        }
+
+        /* HUMAN IN LOOP */
+
+        .human-loop {
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #070b12,
+                    #0b1510,
+                    #070b12
+                );
+        }
+
+        .principle {
+            max-width: 850px;
+            margin: auto;
+
+            padding: 45px 30px;
+
+            border: 1px solid var(--border);
+            border-radius: 12px;
+
+            background: rgba(0, 255, 102, 0.025);
+        }
+
+        .principle h3 {
+            color: var(--green);
+            font-size: 1.7rem;
+            margin-bottom: 15px;
+        }
+
+        .principle p {
+            color: var(--muted);
+            font-size: 1.05rem;
+        }
+
+        /* ROADMAP */
+
+        .roadmap {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .roadmap-item {
+            position: relative;
+
+            padding: 25px 25px 25px 35px;
+            margin-bottom: 20px;
+
+            border-left: 2px solid var(--green);
+            background: var(--panel);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .roadmap-item h3 {
+            color: var(--green);
+            margin-bottom: 8px;
+        }
+
+        .roadmap-item p {
+            color: var(--muted);
+        }
+
+        /* DISCLAIMER */
+
+        .disclaimer {
+            max-width: 900px;
+            margin: 0 auto;
+
+            padding: 25px;
+
+            border: 1px solid rgba(255, 213, 79, 0.25);
+            border-radius: 8px;
+
+            background: rgba(255, 213, 79, 0.04);
+        }
+
+        .disclaimer strong {
+            color: #ffd54f;
+        }
+
+        .disclaimer p {
+            color: var(--muted);
+            margin-top: 8px;
+        }
+
+        /* FOUNDER */
+
+        .founder {
+            text-align: center;
+            background: #090f18;
+        }
+
+        .founder-box {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .founder-box h3 {
+            font-size: 1.8rem;
+            color: var(--green);
+            margin-bottom: 10px;
+        }
+
+        .founder-box p {
+            color: var(--muted);
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 35px 20px;
+
+            text-align: center;
+
+            border-top: 1px solid var(--border);
+            background: #05080d;
+        }
+
+        footer .brand {
+            color: var(--green);
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        footer p {
+            color: #657181;
+            font-size: 0.85rem;
+            margin-top: 8px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .about-grid,
+            .status-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 70px 6%;
+            }
+
+            .hero {
+                min-height: 80vh;
+            }
+        }
+
+        /* ACCESSIBILITY */
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            * {
+                transition: none !important;
+            }
         }
     </style>
 </head>
+
 <body>
 
-    <div class="container">
-        <h1>Zen Security Systems</h1>
+    <!-- NAVIGATION -->
+
+    <nav>
+        <div class="logo">ZEN // INFRASTRUCTURE</div>
+
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#status">Status</a></li>
+            <li><a href="#principle">Principles</a></li>
+            <li><a href="#roadmap">Roadmap</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- HERO -->
+
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <div class="status">
+                Early-Stage R&D
+            </div>
+
+            <h1>
+                Secure Cities.<br>
+                <span>Smart Future.</span>
+            </h1>
+
+            <h2>
+                Exploring technology, infrastructure, safety, and
+                human-centered systems designed to help solve real-world problems.
+            </h2>
+
+            <div class="hero-buttons">
+                <a class="button primary" href="#about">
+                    Explore Zen
+                </a>
+
+                <a class="button secondary" href="#status">
+                    Current Status
+                </a>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ABOUT -->
+
+    <section class="about" id="about">
+
+        <div class="section-title">
+
+            <h2>
+                What is <span>Zen?</span>
+            </h2>
+
+            <p>
+                Zen Infrastructure Technologies is an early-stage
+                research and development project focused on creating
+                technology that can make communities, infrastructure,
+                and everyday systems safer and more effective.
+            </p>
+
+        </div>
+
+
+        <div class="about-grid">
+
+            <div class="card">
+
+                <h3>Infrastructure</h3>
+
+                <p>
+                    Researching ways technology can interact with
+                    infrastructure and help communities respond to
+                    problems more effectively.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Safety</h3>
+
+                <p>
+                    Exploring concepts for improving safety,
+                    communication, emergency awareness, and
+                    coordination between people and systems.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Human-Centered Technology</h3>
+
+                <p>
+                    Zen is built around the idea that technology
+                    should support people rather than blindly replace
+                    human judgment.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Mental Health</h3>
+
+                <p>
+                    Zen also supports ideas and projects related to
+                    mental health, both through technology and through
+                    non-technical approaches.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CURRENT STATUS -->
+
+    <section id="status">
+
+        <div class="section-title">
+
+            <h2>
+                Where Zen <span>Stands</span>
+            </h2>
+
+            <p>
+                Transparency matters. These categories separate what
+                exists today from what Zen is researching and what
+                may come later.
+            </p>
+
+        </div>
+
+
+        <div class="status-grid">
+
+            <div class="status-card">
+
+                <div class="status-label now">
+                    Current
+                </div>
+
+                <h3>Research & Prototype Development</h3>
+
+                <p>
+                    Zen is currently an early-stage project with
+                    research, system concepts, documentation, and
+                    prototype/demo development underway.
+                </p>
+
+            </div>
+
+
+            <div class="status-card">
+
+                <div class="status-label next">
+                    Planned
+                </div>
+
+                <h3>System Development</h3>
+
+                <p>
+                    Future development may include software
+                    prototypes and infrastructure-focused technology
+                    designed around safety and human oversight.
+                </p>
+
+            </div>
+
+
+            <div class="status-card">
+
+                <div class="status-label future">
+                    Future
+                </div>
+
+                <h3>Real-World Deployment</h3>
+
+                <p>
+                    Deployment into schools, cities, public
+                    infrastructure, or emergency systems would require
+                    testing, certification, partnerships, and
+                    appropriate regulatory approval.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- HUMAN IN THE LOOP -->
+
+    <section class="human-loop" id="principle">
+
+        <div class="section-title">
+
+            <h2>
+                The <span>Human</span> Stays in Control
+            </h2>
+
+        </div>
+
+
+        <div class="principle">
+
+            <h3>Human-in-the-Loop Philosophy</h3>
+
+            <p>
+                Zen does not aim to create systems that blindly make
+                critical decisions without human oversight.
+                For safety-critical situations, human judgment,
+                verification, and accountability remain fundamental
+                principles of the project.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ROADMAP -->
+
+    <section id="roadmap">
+
+        <div class="section-title">
+
+            <h2>
+                Zen <span>Roadmap</span>
+            </h2>
+
+            <p>
+                A simple view of the direction Zen is taking.
+            </p>
+
+        </div>
+
+
+        <div class="roadmap">
+
+            <div class="roadmap-item">
+
+                <h3>01 // Research</h3>
+
+                <p>
+                    Identify real-world problems and research possible
+                    technological and non-technological solutions.
+                </p>
+
+            </div>
+
+
+            <div class="roadmap-item">
+
+                <h3>02 // Prototype</h3>
+
+                <p>
+                    Build controlled software demonstrations to test
+                    ideas before considering real-world deployment.
+                </p>
+
+            </div>
+
+
+            <div class="roadmap-item">
+
+                <h3>03 // Testing</h3>
+
+                <p>
+                    Evaluate reliability, usability, safety,
+                    security, and human interaction.
+                </p>
+
+            </div>
+
+
+            <div class="roadmap-item">
+
+                <h3>04 // Partnerships</h3>
+
+                <p>
+                    Explore appropriate partnerships, professional
+                    review, and regulatory requirements before any
+                    real-world implementation.
+                </p>
+
+            </div>
+
+
+            <div class="roadmap-item">
+
+                <h3>05 // Deployment</h3>
+
+                <p>
+                    Only pursue real-world deployment when the
+                    technology is sufficiently tested, supported,
+                    compliant, and ready.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- DISCLAIMER -->
+
+    <section>
+
+        <div class="disclaimer">
+
+            <strong>Important Status Notice</strong>
+
+            <p>
+                Zen Infrastructure Technologies is currently an
+                early-stage independent research and development
+                project. Concepts, prototypes, and future ideas shown
+                on this website should not be interpreted as currently
+                deployed emergency services, certified safety systems,
+                or replacements for existing emergency services.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOUNDER -->
+
+    <section class="founder">
+
+        <div class="founder-box">
+
+            <h3>Founded by Gabriel</h3>
+
+            <p>
+                Zen began as an independent project focused on
+                understanding real-world problems and exploring
+                practical ways technology and people can work together
+                to create a safer and better future.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="brand">
+            ZEN INFRASTRUCTURE TECHNOLOGIES
+        </div>
+
         <p>
-            Official Executive Statement from the Founder: <br><br>
-            "I have come to the realization that I am not ready for a project of this scale just yet. My current hyper-focus must remain locked onto my active education and immediate creative horizons. Zen will be back, but not now."
+            Secure Cities. Smart Future.
         </p>
-        <div class="signature">CEO // GABRIEL</div>
-    </div>
+
+        <p>
+            © 2026 Zen Infrastructure Technologies.
+            Early-stage research and development.
+        </p>
+
+    </footer>
 
 </body>
 </html>
