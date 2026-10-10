@@ -1,1041 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#070b12">
-
-    <title>Zen Infrastructure Technologies</title>
-
-    <meta name="description"
-          content="Zen Infrastructure Technologies — Secure Cities. Smart Future.">
-
-    <style>
-        :root {
-            --bg: #070b12;
-            --panel: #0d1722;
-            --green: #00ff99;
-            --cyan: #00d9ff;
-            --text: #f4f8fa;
-            --muted: #a2b1bd;
-            --border: rgba(0, 255, 153, 0.3);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 90px;
-        }
-
-        body {
-            background: var(--bg);
-            color: var(--text);
-            font-family: "Segoe UI", Arial, sans-serif;
-            line-height: 1.65;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .container {
-            width: min(1150px, 90%);
-            margin: auto;
-        }
-
-        /* NAVIGATION */
-
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-
-            background: rgba(5, 10, 17, 0.94);
-            backdrop-filter: blur(15px);
-
-            border-bottom: 1px solid var(--border);
-        }
-
-        .nav-inner {
-            min-height: 76px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .logo {
-            color: var(--green);
-            font-size: 1.5rem;
-            font-weight: 900;
-            letter-spacing: 5px;
-            text-shadow: 0 0 15px rgba(0, 255, 153, 0.3);
-        }
-
-        .logo small {
-            display: block;
-            color: #c1d0d9;
-            font-size: 0.58rem;
-            letter-spacing: 2px;
-            font-weight: 500;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 23px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--muted);
-            font-size: 0.9rem;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: var(--green);
-        }
-
-        .nav-button {
-            border: 1px solid var(--green);
-            color: var(--green);
-            padding: 9px 15px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        .menu-button {
-            display: none;
-            background: transparent;
-            border: 1px solid var(--border);
-            color: var(--green);
-            border-radius: 6px;
-            padding: 8px 12px;
-            font-size: 1.2rem;
-        }
-
-        /* HERO */
-
-        .hero {
-            min-height: 610px;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    rgba(4, 10, 17, 0.98) 0%,
-                    rgba(4, 10, 17, 0.88) 40%,
-                    rgba(4, 10, 17, 0.3) 100%
-                ),
-                linear-gradient(
-                    0deg,
-                    var(--bg),
-                    transparent 40%
-                ),
-                url("https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=2000&q=85")
-                center / cover;
-        }
-
-        .hero-content {
-            max-width: 700px;
-            padding: 90px 0;
-        }
-
-        .eyebrow {
-            color: var(--green);
-            font-size: 0.78rem;
-            font-weight: bold;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
-
-        .hero h1 {
-            font-size: clamp(3rem, 7vw, 5.8rem);
-            line-height: 1.02;
-            letter-spacing: -3px;
-            margin: 22px 0;
-        }
-
-        .hero h1 span {
-            color: var(--green);
-            text-shadow: 0 0 28px rgba(0, 255, 153, 0.22);
-        }
-
-        .hero p {
-            color: #c3d0d9;
-            max-width: 580px;
-            font-size: 1.1rem;
-        }
-
-        .status-badge {
-            display: inline-block;
-            border: 1px solid var(--border);
-            color: var(--green);
-            background: rgba(0, 255, 153, 0.06);
-            padding: 7px 13px;
-            border-radius: 30px;
-            font-size: 0.73rem;
-            font-weight: bold;
-            letter-spacing: 1.5px;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 12px 22px;
-            border: 1px solid var(--green);
-            border-radius: 7px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-            transition: 0.25s;
-        }
-
-        .button.primary {
-            background: var(--green);
-            color: #04100a;
-        }
-
-        .button.secondary {
-            color: var(--green);
-            background: rgba(0, 0, 0, 0.2);
-        }
-
-        .button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 24px rgba(0, 255, 153, 0.2);
-        }
-
-        /* GENERAL SECTIONS */
-
-        section {
-            padding: 85px 0;
-        }
-
-        .section-heading {
-            margin-bottom: 35px;
-        }
-
-        .section-heading.center {
-            text-align: center;
-        }
-
-        h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            line-height: 1.15;
-            margin: 12px 0;
-        }
-
-        h2 span {
-            color: var(--green);
-        }
-
-        .section-heading p {
-            max-width: 720px;
-            color: var(--muted);
-        }
-
-        .section-heading.center p {
-            margin: auto;
-        }
-
-        /* ABOUT */
-
-        .about-layout {
-            display: grid;
-            grid-template-columns: 0.9fr 1.3fr;
-            gap: 35px;
-            align-items: center;
-        }
-
-        .about-intro p {
-            color: var(--muted);
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-        }
-
-        .card {
-            padding: 25px;
-            background: linear-gradient(145deg, #101d29, #09121b);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            transition: 0.25s;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            border-color: var(--green);
-            box-shadow: 0 0 25px rgba(0, 255, 153, 0.07);
-        }
-
-        .card-icon {
-            color: var(--green);
-            font-size: 1.8rem;
-            margin-bottom: 12px;
-        }
-
-        .card h3 {
-            font-size: 1.05rem;
-            margin-bottom: 8px;
-        }
-
-        .card p {
-            color: var(--muted);
-            font-size: 0.91rem;
-        }
-
-        /* STATUS */
-
-        .status-section {
-            background: linear-gradient(
-                180deg,
-                rgba(0, 255, 153, 0.035),
-                transparent
-            );
-            border-top: 1px solid rgba(0, 255, 153, 0.13);
-            border-bottom: 1px solid rgba(0, 255, 153, 0.13);
-        }
-
-        .status-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
-        }
-
-        .status-card {
-            padding: 26px;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            background: rgba(7, 17, 25, 0.9);
-        }
-
-        .status-card.planned {
-            border-color: rgba(255, 190, 65, 0.6);
-        }
-
-        .status-card.future {
-            border-color: rgba(0, 217, 255, 0.55);
-        }
-
-        .status-label {
-            display: inline-block;
-            margin-bottom: 20px;
-            color: var(--green);
-            font-size: 0.75rem;
-            font-weight: 900;
-            letter-spacing: 2px;
-        }
-
-        .planned .status-label {
-            color: #ffbe41;
-        }
-
-        .future .status-label {
-            color: var(--cyan);
-        }
-
-        .status-card h3 {
-            margin-bottom: 10px;
-        }
-
-        .status-card p {
-            color: var(--muted);
-            font-size: 0.91rem;
-        }
-
-        /* HUMAN-IN-THE-LOOP */
-
-        .principle {
-            display: grid;
-            grid-template-columns: 0.8fr 1.2fr;
-            align-items: center;
-            gap: 40px;
-            padding: 35px;
-            border: 1px solid var(--border);
-            border-radius: 16px;
-
-            background:
-                radial-gradient(
-                    circle at 20% 50%,
-                    rgba(0, 255, 153, 0.12),
-                    transparent 55%
-                ),
-                var(--panel);
-        }
-
-        .principle-visual {
-            min-height: 240px;
-            display: grid;
-            place-items: center;
-            border: 1px solid rgba(0, 255, 153, 0.25);
-            border-radius: 12px;
-
-            background:
-                repeating-radial-gradient(
-                    circle,
-                    transparent 0 28px,
-                    rgba(0, 255, 153, 0.08) 29px 30px,
-                    transparent 31px 48px
-                );
-        }
-
-        .principle-logo {
-            width: 115px;
-            height: 115px;
-            display: grid;
-            place-items: center;
-            border: 1px solid var(--green);
-            border-radius: 50%;
-            color: var(--green);
-            font-size: 3.5rem;
-            font-weight: 900;
-            box-shadow: 0 0 35px rgba(0, 255, 153, 0.15);
-        }
-
-        .principle p {
-            color: var(--muted);
-        }
-
-        /* ROADMAP */
-
-        .roadmap {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 15px;
-        }
-
-        .roadmap-item {
-            padding: 20px 15px;
-            border-top: 2px solid var(--green);
-            background: linear-gradient(
-                180deg,
-                rgba(0, 255, 153, 0.06),
-                transparent
-            );
-        }
-
-        .roadmap-number {
-            color: var(--green);
-            font-size: 0.75rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        .roadmap-item h3 {
-            margin: 10px 0;
-            font-size: 1rem;
-        }
-
-        .roadmap-item p {
-            color: var(--muted);
-            font-size: 0.85rem;
-        }
-
-        /* TRANSPARENCY NOTICE */
-
-        .notice {
-            margin-top: 35px;
-            padding: 23px;
-            border: 1px solid rgba(255, 190, 65, 0.55);
-            border-radius: 10px;
-            background: rgba(255, 190, 65, 0.04);
-        }
-
-        .notice h3 {
-            color: #ffbe41;
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-        }
-
-        .notice p {
-            color: var(--muted);
-            font-size: 0.9rem;
-        }
-
-        /* FOUNDER */
-
-        .founder-section {
-            border-top: 1px solid var(--border);
-            background:
-                radial-gradient(
-                    ellipse at 15% 50%,
-                    rgba(0, 255, 153, 0.09),
-                    transparent 40%
-                ),
-                #060d14;
-        }
-
-        .founder-card {
-            display: grid;
-            grid-template-columns: 150px 1fr;
-            align-items: center;
-            gap: 30px;
-            padding: 32px;
-            border: 1px solid var(--border);
-            border-radius: 15px;
-            background: rgba(4, 12, 19, 0.75);
-        }
-
-        .founder-avatar {
-            width: 140px;
-            height: 140px;
-            display: grid;
-            place-items: center;
-            border: 1px solid var(--green);
-            border-radius: 50%;
-            color: var(--green);
-            font-size: 4rem;
-            font-weight: bold;
-            background: radial-gradient(
-                circle,
-                rgba(0, 255, 153, 0.15),
-                transparent 70%
-            );
-            box-shadow: 0 0 30px rgba(0, 255, 153, 0.1);
-        }
-
-        .founder-card p {
-            max-width: 650px;
-            color: var(--muted);
-        }
-
-        /* FOOTER */
-
-        footer {
-            padding: 30px 0;
-            border-top: 1px solid var(--border);
-            background: #03070b;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .footer-brand {
-            color: var(--green);
-            font-weight: 900;
-            letter-spacing: 3px;
-        }
-
-        .footer-motto {
-            color: var(--green);
-            font-size: 0.9rem;
-        }
-
-        .footer-note {
-            color: #7e919c;
-            font-size: 0.78rem;
-        }
-
-        /* MOBILE */
-
-        @media (max-width: 900px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 76px;
-                left: 0;
-                right: 0;
-                padding: 22px 5%;
-                flex-direction: column;
-                align-items: flex-start;
-                background: #070d14;
-                border-bottom: 1px solid var(--border);
-            }
-
-            .nav-links.open {
-                display: flex;
-            }
-
-            .menu-button {
-                display: block;
-            }
-
-            .nav-button {
-                display: none;
-            }
-
-            .about-layout,
-            .principle {
-                grid-template-columns: 1fr;
-            }
-
-            .status-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .roadmap {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 560px) {
-            .hero {
-                min-height: 560px;
-                background-position: center;
-            }
-
-            .hero h1 {
-                letter-spacing: -1.5px;
-            }
-
-            section {
-                padding: 65px 0;
-            }
-
-            .feature-grid,
-            .roadmap {
-                grid-template-columns: 1fr;
-            }
-
-            .founder-card {
-                grid-template-columns: 1fr;
-                padding: 24px;
-            }
-
-            .founder-avatar {
-                width: 105px;
-                height: 105px;
-                font-size: 3rem;
-            }
-
-            .principle {
-                padding: 22px;
-            }
-
-            .footer-content {
-                align-items: flex-start;
-                flex-direction: column;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            html {
-                scroll-behavior: auto;
-            }
-
-            *,
-            *::before,
-            *::after {
-                transition: none !important;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070b10">
+  <meta name="description" content="Zen Infrastructure Technologies explores human-centered technology, infrastructure, security, and mental health.">
+  <title>Zen Infrastructure Technologies | Secure Cities. Smart Future.</title>
+  <style>
+    :root{--bg:#070b10;--panel:#0d141d;--panel2:#111c27;--green:#00ff66;--cyan:#00e5ff;--text:#edf5f8;--muted:#9aabb8;--border:rgba(0,255,102,.24);--max:1180px}
+    *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:88px}body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 15% 15%,rgba(0,255,102,.055),transparent 36%),radial-gradient(ellipse at 85% 45%,rgba(0,229,255,.045),transparent 35%),var(--bg)}
+    a{color:inherit;text-decoration:none}button,input,textarea{font:inherit}a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}.container{width:min(var(--max),90%);margin:auto}.section{padding:86px 0}.section-alt{background:rgba(12,19,27,.62);border-block:1px solid rgba(154,171,184,.08)}.eyebrow{color:var(--green);font-size:.78rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px}.section-heading{max-width:760px;text-align:center;margin:0 auto 40px}.section-heading p{max-width:680px;margin:auto}h1,h2,h3{line-height:1.2;overflow-wrap:anywhere}h2{font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:16px}h3{font-size:1.15rem;margin-bottom:12px}p{color:var(--muted)}.accent{color:var(--green)}.cyan{color:var(--cyan)}
+    .site-header{position:sticky;top:0;z-index:1000;background:rgba(7,11,16,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}.navbar{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;gap:12px;flex-shrink:0}.brand-mark{width:44px;height:44px;display:grid;place-items:center;border:1px solid var(--green);border-radius:12px;color:var(--green);font-size:1.7rem;font-weight:900;text-shadow:0 0 15px rgba(0,255,102,.65);box-shadow:0 0 24px rgba(0,255,102,.1)}.brand-name{font-size:.94rem;font-weight:800;line-height:1.25}.brand-name small{display:block;color:var(--green);font-size:.67rem;letter-spacing:1.5px;margin-top:4px}.nav-links{list-style:none;display:flex;align-items:center;gap:16px}.nav-links a{color:var(--muted);font-size:.82rem}.nav-links a:hover,.footer-links a:hover{color:var(--green)}.menu-toggle{display:none;background:transparent;border:1px solid var(--border);color:var(--green);border-radius:8px;padding:8px 12px;cursor:pointer}
+    .hero{min-height:660px;display:flex;align-items:center;background:linear-gradient(90deg,rgba(7,11,16,.97),rgba(7,11,16,.8) 50%,rgba(7,11,16,.45)),linear-gradient(0deg,var(--bg),transparent 35%),url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=2000&q=85') center/cover no-repeat;border-bottom:1px solid var(--border)}.hero-content{padding:95px 0;max-width:820px}.status-label{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--border);background:rgba(0,0,0,.35);padding:8px 13px;border-radius:30px;color:var(--green);font-size:.76rem;letter-spacing:1.4px;text-transform:uppercase;margin-bottom:26px}.status-dot{width:8px;height:8px;background:var(--green);border-radius:50%;box-shadow:0 0 12px var(--green)}.hero h1{font-size:clamp(2.6rem,7vw,5.5rem);letter-spacing:-2px;margin-bottom:24px}.hero h1 span{display:block;color:var(--green);text-shadow:0 0 28px rgba(0,255,102,.16)}.hero p{max-width:670px;font-size:clamp(1rem,2vw,1.18rem);margin-bottom:28px}.hero-note{font-size:.82rem;margin-top:26px;color:#b4c3cc}.hero-buttons{display:flex;flex-wrap:wrap;gap:14px}.button{display:inline-flex;justify-content:center;align-items:center;min-height:48px;padding:12px 22px;border-radius:9px;border:1px solid var(--green);background:var(--green);color:#041009;font-weight:800;cursor:pointer;transition:transform .2s,box-shadow .2s}.button:hover{transform:translateY(-2px);box-shadow:0 0 24px rgba(0,255,102,.22)}.button.secondary{background:transparent;color:var(--text);border-color:rgba(237,245,248,.25)}.button.secondary:hover{border-color:var(--green);color:var(--green)}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.card{min-width:0;background:linear-gradient(145deg,rgba(17,28,39,.92),rgba(10,16,23,.95));border:1px solid rgba(154,171,184,.15);border-radius:16px;padding:26px;box-shadow:0 0 24px rgba(0,255,102,.06);transition:transform .22s,border-color .22s}.card:hover{transform:translateY(-4px);border-color:var(--border)}.card p{font-size:.94rem}.card-icon{width:48px;height:48px;display:grid;place-items:center;border-radius:12px;border:1px solid var(--border);color:var(--green);background:rgba(0,255,102,.045);font-size:1.4rem;margin-bottom:20px}.about-strip{margin-top:24px;border-left:3px solid var(--green);background:rgba(0,255,102,.035);padding:20px 24px;border-radius:0 12px 12px 0}.about-strip p{color:var(--text)}.project-tag,.status-tag{display:inline-block;border:1px solid var(--border);border-radius:30px;color:var(--green);font-size:.7rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:5px 10px;margin-bottom:15px}.status-tag.planned{color:var(--cyan);border-color:rgba(0,229,255,.3)}.status-tag.future{color:#c0cbd4;border-color:rgba(192,203,212,.25)}.card ul{padding-left:20px;margin-top:14px;color:var(--muted);font-size:.9rem}.card li{margin:6px 0}.notice{border:1px solid rgba(0,229,255,.23);background:rgba(0,229,255,.035);padding:20px 22px;border-radius:12px;margin-top:28px}.notice strong{color:var(--cyan)}.notice p{margin-top:5px;font-size:.91rem}
+    .principles-layout{display:grid;grid-template-columns:1fr 1fr;gap:42px;align-items:center}.principles-copy p+p{margin-top:16px}.principle-list{list-style:none;margin-top:22px}.principle-list li{position:relative;padding:12px 0 12px 32px;border-bottom:1px solid rgba(154,171,184,.12);color:var(--text)}.principle-list li:before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:900}.principles-visual{padding:32px;border:1px solid var(--border);border-radius:20px;background:radial-gradient(circle at center,rgba(0,255,102,.09),transparent 65%),var(--panel);text-align:center}.big-z{font-size:clamp(5rem,12vw,9rem);line-height:1.2;color:var(--green);font-weight:900;text-shadow:0 0 38px rgba(0,255,102,.25)}.flow-line{width:2px;height:30px;margin:10px auto;background:linear-gradient(var(--green),var(--cyan))}.flow-box{border:1px solid var(--border);background:rgba(7,11,16,.8);border-radius:10px;padding:12px;color:var(--text);font-weight:700}.flow-box small{display:block;color:var(--muted);font-weight:400;font-size:.8rem}
+    .timeline{max-width:850px;margin:auto}.timeline-item{position:relative;margin-left:20px;padding:0 0 36px 32px;border-left:1px solid rgba(0,255,102,.35)}.timeline-item:last-child{border-left-color:transparent;padding-bottom:0}.timeline-item:before{content:'';position:absolute;left:-6px;top:4px;width:11px;height:11px;background:var(--green);border-radius:50%;box-shadow:0 0 12px rgba(0,255,102,.4)}.timeline-item h3{margin-bottom:8px}.timeline-item p{max-width:700px}
+    .newsletter-panel{border:1px solid var(--border);border-radius:22px;padding:clamp(26px,5vw,52px);background:radial-gradient(ellipse at 100% 0%,rgba(0,255,102,.09),transparent 48%),var(--panel);box-shadow:0 0 24px rgba(0,255,102,.08)}.newsletter-panel .section-heading{margin-bottom:28px}.newsletter-form{max-width:700px;margin:auto}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}.form-field{margin-bottom:18px}.form-field label{display:block;color:var(--text);font-size:.88rem;font-weight:700;margin-bottom:8px}.form-field input,.form-field textarea{width:100%;min-height:48px;padding:12px 14px;color:var(--text);background:#080e14;border:1px solid rgba(154,171,184,.25);border-radius:9px}.form-field textarea{min-height:130px;resize:vertical}.form-field input::placeholder,.form-field textarea::placeholder{color:#70818e}.consent{display:flex;align-items:flex-start;gap:11px;color:var(--muted);font-size:.85rem;margin:18px 0}.consent input{width:17px;height:17px;margin-top:5px;flex-shrink:0;accent-color:var(--green)}.consent label{cursor:pointer}.form-status{min-height:28px;margin-top:16px;font-size:.9rem;color:var(--cyan)}.small-print{font-size:.8rem;margin-top:14px}
+    .founder-card{display:grid;grid-template-columns:160px 1fr;gap:30px;align-items:center;max-width:900px;margin:auto;padding:32px;border:1px solid var(--border);background:var(--panel);border-radius:20px}.founder-avatar{width:150px;height:150px;display:grid;place-items:center;border-radius:50%;border:1px solid var(--green);color:var(--green);font-size:4rem;font-weight:900;background:radial-gradient(circle,rgba(0,255,102,.12),rgba(0,0,0,.3));box-shadow:0 0 24px rgba(0,255,102,.1)}.founder-card p+p{margin-top:12px}.founder-signature{color:var(--green);margin-top:18px;font-weight:800}.faq-list{max-width:850px;margin:auto}.faq-list details{background:var(--panel);border:1px solid rgba(154,171,184,.16);border-radius:12px;padding:18px 22px;margin-bottom:12px}.faq-list summary{cursor:pointer;list-style:none;color:var(--text);font-weight:700;padding-right:28px;position:relative}.faq-list summary::-webkit-details-marker{display:none}.faq-list summary:after{content:'+';position:absolute;right:0;top:-3px;color:var(--green);font-size:1.4rem}.faq-list details[open] summary:after{content:'−'}.faq-list details p{margin-top:14px}
+    .contact-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:24px}.contact-card{background:var(--panel);border:1px solid rgba(154,171,184,.16);border-radius:16px;padding:26px}.contact-card p+p{margin-top:12px}.privacy-list{list-style:none;margin-top:16px}.privacy-list li{color:var(--muted);margin:9px 0;padding-left:22px;position:relative}.privacy-list li:before{content:'•';position:absolute;left:4px;color:var(--green)}.site-footer{padding:32px 0;border-top:1px solid var(--border);background:#05080c}.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}.footer-inner p{font-size:.82rem}.footer-links{display:flex;flex-wrap:wrap;gap:18px}.footer-links a{color:var(--muted);font-size:.82rem}.back-to-top{position:fixed;right:18px;bottom:18px;z-index:500;width:44px;height:44px;display:grid;place-items:center;border:1px solid var(--border);border-radius:10px;background:rgba(7,11,16,.92);color:var(--green);font-size:1.25rem}
+    @media(max-width:1050px){.menu-toggle{display:inline-block}.nav-links{display:none;position:absolute;top:76px;left:0;right:0;padding:20px 5%;background:rgba(7,11,16,.99);border-bottom:1px solid var(--border);flex-direction:column;align-items:flex-start;gap:0;max-height:calc(100vh - 76px);overflow-y:auto}.nav-links.open{display:flex}.nav-links li{width:100%}.nav-links a{display:block;padding:11px 0;font-size:.95rem}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:700px){.section{padding:64px 0}.hero{min-height:590px;background-position:58% center}.hero-content{padding:76px 0}.hero h1{letter-spacing:-1px}.grid,.grid.two,.principles-layout,.contact-layout,.form-row{grid-template-columns:1fr}.principles-visual{padding:24px}.founder-card{grid-template-columns:1fr;text-align:center;padding:25px}.founder-avatar{margin:auto;width:120px;height:120px;font-size:3.3rem}.footer-inner{flex-direction:column;align-items:flex-start}.brand-name{font-size:.82rem}.brand-mark{width:40px;height:40px}.card{padding:23px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition-duration:.01ms!important}}
+  </style>
 </head>
-
-<body>
-
-    <!-- NAVIGATION -->
-
-    <nav>
-        <div class="container nav-inner">
-
-            <a class="logo" href="#home">
-                ZEN
-                <small>INFRASTRUCTURE TECHNOLOGIES</small>
-            </a>
-
-            <button
-                class="menu-button"
-                id="menuButton"
-                aria-label="Open navigation"
-                aria-expanded="false">
-                ☰
-            </button>
-
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#status">Status</a></li>
-                <li><a href="#principles">Principles</a></li>
-                <li><a href="#roadmap">Roadmap</a></li>
-                <li><a href="#founder">Founder</a></li>
-            </ul>
-
-            <a class="nav-button" href="#about">
-                A Safer Tomorrow ↗
-            </a>
-
-        </div>
-    </nav>
-
-
-    <!-- HERO -->
-
-    <header class="hero" id="home">
-        <div class="container">
-
-            <div class="hero-content">
-
-                <div class="status-badge">
-                    EARLY-STAGE RESEARCH & DEVELOPMENT
-                </div>
-
-                <h1>
-                    Secure Cities.<br>
-                    <span>Smart Future.</span>
-                </h1>
-
-                <p>
-                    Zen Infrastructure Technologies is an early-stage
-                    research and development project exploring technology
-                    that can help make communities, infrastructure, and
-                    everyday systems safer, smarter, and more resilient.
-                </p>
-
-                <div class="hero-actions">
-                    <a href="#about" class="button primary">
-                        Explore Zen →
-                    </a>
-
-                    <a href="#status" class="button secondary">
-                        Current Status
-                    </a>
-                </div>
-
-            </div>
-        </div>
-    </header>
-
-
-    <!-- ABOUT ZEN -->
-
-    <section id="about">
-        <div class="container about-layout">
-
-            <div class="about-intro">
-
-                <div class="eyebrow">// About Zen</div>
-
-                <h2>What is <span>Zen?</span></h2>
-
-                <p>
-                    Zen is an independent early-stage project focused on
-                    researching practical ways people and technology can
-                    work together to address real-world problems.
-                </p>
-
-                <p style="margin-top: 15px;">
-                    Its direction includes infrastructure, safety,
-                    human-centered technology, and mental-health initiatives.
-                </p>
-
-            </div>
-
-            <div class="feature-grid">
-
-                <article class="card">
-                    <div class="card-icon">▥</div>
-                    <h3>Infrastructure</h3>
-                    <p>
-                        Exploring how technology can support infrastructure
-                        and help communities respond to challenges.
-                    </p>
-                </article>
-
-                <article class="card">
-                    <div class="card-icon">⬡</div>
-                    <h3>Safety</h3>
-                    <p>
-                        Researching concepts around safety, communication,
-                        emergency awareness, and coordination.
-                    </p>
-                </article>
-
-                <article class="card">
-                    <div class="card-icon">◎</div>
-                    <h3>Human-Centered Technology</h3>
-                    <p>
-                        Technology should support people—not blindly
-                        replace human judgment.
-                    </p>
-                </article>
-
-                <article class="card">
-                    <div class="card-icon">✳</div>
-                    <h3>Mental Health</h3>
-                    <p>
-                        Supporting mental-health ideas and initiatives,
-                        both with and without technology.
-                    </p>
-                </article>
-
-            </div>
-        </div>
-    </section>
-
-
-    <!-- CURRENT STATUS -->
-
-    <section class="status-section" id="status">
-        <div class="container">
-
-            <div class="section-heading">
-                <div class="eyebrow">// Where Zen Stands</div>
-                <h2>Current <span>Status</span></h2>
-                <p>
-                    Transparency matters. Here's the difference between
-                    current work, planned development, and future possibilities.
-                </p>
-            </div>
-
-            <div class="status-grid">
-
-                <article class="status-card">
-                    <div class="status-label">● CURRENT</div>
-                    <h3>Research & Prototype Development</h3>
-                    <p>
-                        Research, system concepts, documentation, and
-                        prototype/demo work are part of Zen's early-stage
-                        development.
-                    </p>
-                </article>
-
-                <article class="status-card planned">
-                    <div class="status-label">● PLANNED</div>
-                    <h3>System Development</h3>
-                    <p>
-                        Future work may include software prototypes and
-                        infrastructure-focused concepts designed around
-                        safety and human oversight.
-                    </p>
-                </article>
-
-                <article class="status-card future">
-                    <div class="status-label">● FUTURE</div>
-                    <h3>Real-World Deployment</h3>
-                    <p>
-                        Deployment in schools, cities, or public infrastructure
-                        would require testing, qualified partners, and
-                        relevant approvals.
-                    </p>
-                </article>
-
-            </div>
-        </div>
-    </section>
-
-
-    <!-- HUMAN-IN-THE-LOOP PRINCIPLE -->
-
-    <section id="principles">
-        <div class="container">
-
-            <div class="principle">
-
-                <div class="principle-visual">
-                    <div class="principle-logo">Z</div>
-                </div>
-
-                <div>
-                    <div class="eyebrow">// Our Principle</div>
-
-                    <h2>
-                        The <span>Human</span> Stays in Control
-                    </h2>
-
-                    <p>
-                        Zen's human-in-the-loop philosophy centers human
-                        judgment, verification, and accountability—especially
-                        when a system could affect safety.
-                    </p>
-
-                    <p style="margin-top: 15px;">
-                        Technology should help people make informed decisions,
-                        not remove responsible people from the process.
-                    </p>
-
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-
-    <!-- ROADMAP -->
-
-    <section id="roadmap">
-        <div class="container">
-
-            <div class="section-heading">
-                <div class="eyebrow">// Zen Roadmap</div>
-                <h2>The Path <span>Forward</span></h2>
-                <p>
-                    A possible development direction—not a guarantee of
-                    dates, outcomes, or deployment.
-                </p>
-            </div>
-
-            <div class="roadmap">
-
-                <article class="roadmap-item">
-                    <div class="roadmap-number">01 / RESEARCH</div>
-                    <h3>Understand</h3>
-                    <p>
-                        Identify real-world problems and study potential
-                        technical and non-technical solutions.
-                    </p>
-                </article>
-
-                <article class="roadmap-item">
-                    <div class="roadmap-number">02 / PROTOTYPE</div>
-                    <h3>Build</h3>
-                    <p>
-                        Create controlled demonstrations to explore
-                        and test ideas safely.
-                    </p>
-                </article>
-
-                <article class="roadmap-item">
-                    <div class="roadmap-number">03 / TESTING</div>
-                    <h3>Evaluate</h3>
-                    <p>
-                        Review reliability, usability, security,
-                        safety, and human interaction.
-                    </p>
-                </article>
-
-                <article class="roadmap-item">
-                    <div class="roadmap-number">04 / PARTNERSHIPS</div>
-                    <h3>Collaborate</h3>
-                    <p>
-                        Explore professional review, suitable partnerships,
-                        and compliance needs.
-                    </p>
-                </article>
-
-                <article class="roadmap-item">
-                    <div class="roadmap-number">05 / FUTURE</div>
-                    <h3>Deploy Carefully</h3>
-                    <p>
-                        Consider real-world use only when a system
-                        is appropriately tested and ready.
-                    </p>
-                </article>
-
-            </div>
-
-            <div class="notice">
-                <h3>⚠ Important Status Notice</h3>
-                <p>
-                    Zen is an early-stage independent research and development
-                    project. Concepts and prototypes described here are not
-                    represented as deployed emergency services or certified
-                    safety systems, and are not substitutes for existing
-                    emergency services.
-                </p>
-            </div>
-
-        </div>
-    </section>
-
-
-    <!-- FOUNDER -->
-
-    <section class="founder-section" id="founder">
-        <div class="container">
-
-            <div class="founder-card">
-
-                <div class="founder-avatar">V</div>
-
-                <div>
-                    <div class="eyebrow">FOUNDED BY</div>
-
-                    <h2><span>Violet</span></h2>
-
-                    <p>
-                        Zen began as an independent project focused on
-                        understanding real-world problems and exploring
-                        practical ways technology and people can work
-                        together to create a safer, smarter, and brighter future.
-                    </p>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-
-
-    <!-- FOOTER -->
-
-    <footer>
-        <div class="container footer-content">
-
-            <div class="footer-brand">
-                ZEN
-                <div style="font-size: 0.55rem; letter-spacing: 2px;">
-                    INFRASTRUCTURE TECHNOLOGIES
-                </div>
-            </div>
-
-            <div class="footer-motto">
-                Secure Cities. Smart Future.
-            </div>
-
-            <div class="footer-note">
-                © 2026 Zen Infrastructure Technologies<br>
-                Early-stage research and development.
-            </div>
-
-        </div>
-    </footer>
-
-
-    <!-- MOBILE NAVIGATION -->
-
-    <script>
-        const menuButton = document.getElementById("menuButton");
-        const navLinks = document.getElementById("navLinks");
-
-        menuButton.addEventListener("click", function () {
-            const open = navLinks.classList.toggle("open");
-
-            menuButton.setAttribute("aria-expanded", String(open));
-            menuButton.setAttribute(
-                "aria-label",
-                open ? "Close navigation" : "Open navigation"
-            );
-
-            menuButton.textContent = open ? "×" : "☰";
-        });
-
-        navLinks.querySelectorAll("a").forEach(function (link) {
-            link.addEventListener("click", function () {
-                navLinks.classList.remove("open");
-                menuButton.setAttribute("aria-expanded", "false");
-                menuButton.setAttribute("aria-label", "Open navigation");
-                menuButton.textContent = "☰";
-            });
-        });
-    </script>
-
+<body id="top">
+<header class="site-header">
+  <nav class="navbar container" aria-label="Main navigation">
+    <a class="brand" href="#home" aria-label="Zen home"><span class="brand-mark" aria-hidden="true">Z</span><span class="brand-name">ZEN INFRASTRUCTURE<small>TECHNOLOGIES</small></span></a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="navLinks">☰ Menu</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#projects">Projects</a></li><li><a href="#status">Status</a></li><li><a href="#principles">Principles</a></li><li><a href="#roadmap">Roadmap</a></li><li><a href="#insider">Zen Insider</a></li><li><a href="#faq">FAQ</a></li><li><a href="#founder">Founder</a></li><li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <section class="hero" id="home"><div class="container"><div class="hero-content">
+    <div class="status-label"><span class="status-dot"></span> Independent early-stage initiative</div>
+    <h1>Secure Cities.<span>Smart Future.</span></h1>
+    <p>Exploring technology and ideas that could help build safer communities, stronger infrastructure, and a better future for people. Our vision also includes mental health support, with and without technology.</p>
+    <div class="hero-buttons"><a class="button" href="#projects">Explore Zen →</a><a class="button secondary" href="#principles">Our Principles</a></div>
+    <p class="hero-note">People first. Responsible innovation. Human oversight.</p>
+  </div></div></section>
+
+  <section class="section" id="about"><div class="container">
+    <div class="section-heading"><div class="eyebrow">Who We Are</div><h2>Technology With a <span class="accent">Purpose</span></h2><p>Zen Infrastructure Technologies is an early-stage initiative exploring how technology, thoughtful design, and human-centered ideas may help address real-world challenges.</p></div>
+    <div class="grid">
+      <article class="card"><div class="card-icon" aria-hidden="true">⌂</div><h3>Infrastructure</h3><p>Exploring ways technology and connected systems could support the planning, monitoring, and improvement of infrastructure and communities.</p></article>
+      <article class="card"><div class="card-icon" aria-hidden="true">◇</div><h3>Safety and Security</h3><p>Researching concepts that could help improve awareness, coordination, and safety while keeping responsibility and oversight central.</p></article>
+      <article class="card"><div class="card-icon" aria-hidden="true">♡</div><h3>Mental Health</h3><p>Working toward ideas that support mental well-being, encourage understanding, and help people feel less alone—with or without technology.</p></article>
+      <article class="card"><div class="card-icon" aria-hidden="true">◎</div><h3>Human-Centered Technology</h3><p>Exploring technology designed around people's needs, rights, safety, and ability to make informed decisions.</p></article>
+      <article class="card"><div class="card-icon" aria-hidden="true">⌘</div><h3>Research and Development</h3><p>Learning, testing concepts, refining ideas, and exploring possible prototypes as the initiative develops.</p></article>
+      <article class="card"><div class="card-icon" aria-hidden="true">✦</div><h3>A Better Future</h3><p>Our broader mission is to explore ideas that could make a positive difference in people's lives and the communities they call home.</p></article>
+    </div>
+    <div class="about-strip"><p><strong class="accent">Our belief:</strong> Technology should serve people—not replace human responsibility, judgment, or compassion.</p></div>
+  </div></section>
+
+  <section class="section section-alt" id="projects"><div class="container">
+    <div class="section-heading"><div class="eyebrow">Areas of Exploration</div><h2>The <span class="accent">Zen</span> Project Directory</h2><p>A look at the areas Zen is exploring. These categories describe research interests and development directions, not a promise that every system or service is currently available.</p></div>
+    <div class="grid">
+      <article class="card"><span class="project-tag">Research Area</span><h3>Infrastructure Technology</h3><p>Exploring how data, connected systems, and technical tools might help people understand infrastructure needs and improve planning.</p><ul><li>Infrastructure data concepts</li><li>Connected-system research</li><li>Planning and optimization ideas</li></ul></article>
+      <article class="card"><span class="project-tag">Research Area</span><h3>Safety and Security Systems</h3><p>Investigating concepts focused on situational awareness, responsible system design, and potential improvements to safety coordination.</p><ul><li>Safety-oriented concepts</li><li>Human oversight</li><li>Responsible security design</li></ul></article>
+      <article class="card"><span class="project-tag">Core Principle</span><h3>Human-Centered Systems</h3><p>Exploring ways to keep people informed and involved when technology supports important decisions.</p><ul><li>Human review and verification</li><li>Accountability by design</li><li>Clear system limitations</li></ul></article>
+      <article class="card"><span class="project-tag">Mission Area</span><h3>Mental Health and Well-Being</h3><p>Developing ideas for supporting mental health through understanding, communication, and practical support—with and without technology.</p><ul><li>Awareness and encouragement</li><li>People-centered support concepts</li><li>Reducing stigma and isolation</li></ul></article>
+      <article class="card"><span class="project-tag">Development</span><h3>Prototype and Technical Research</h3><p>Exploring technical approaches and prototypes that can help evaluate ideas, identify limitations, and guide future development.</p><ul><li>Early-stage experimentation</li><li>Technical learning</li><li>Iterative improvement</li></ul></article>
+      <article class="card"><span class="project-tag">Long-Term Vision</span><h3>Future Possibilities</h3><p>Considering how different areas of research might eventually work together to help address community needs.</p><ul><li>Future integrations</li><li>Community-centered ideas</li><li>Responsible long-term planning</li></ul></article>
+    </div>
+  </div></section>
+
+  <section class="section" id="status"><div class="container">
+    <div class="section-heading"><div class="eyebrow">Development Center</div><h2>Where Zen <span class="accent">Stands</span></h2><p>We believe in being clear about the difference between present work, planned development, and long-term possibilities.</p></div>
+    <div class="grid">
+      <article class="card"><span class="status-tag">Current Focus</span><h3>Research and Early Development</h3><p>Learning, refining concepts, exploring technical approaches, and working on early demonstrations.</p><ul><li>Mission and project development</li><li>Research and technical exploration</li><li>Early prototype and demo work</li></ul></article>
+      <article class="card"><span class="status-tag planned">Planned Work</span><h3>Refinement and Evaluation</h3><p>Potential next steps include improving documentation, evaluating ideas, and defining practical development milestones.</p><ul><li>Prototype refinement</li><li>More detailed project documentation</li><li>Evaluation of possible use cases</li></ul></article>
+      <article class="card"><span class="status-tag future">Future Possibilities</span><h3>Long-Term Development</h3><p>Future work may explore more mature systems, partnerships, and real-world applications if feasibility and resources allow.</p><ul><li>Further testing and validation</li><li>Potential collaboration</li><li>Possible future deployment</li></ul></article>
+    </div>
+    <div class="notice"><strong>Transparency Notice</strong><p>Zen is an early-stage initiative. Research areas, plans, prototypes, and future concepts should not be interpreted as proof of a finished product, a publicly available service, certification, or real-world deployment. Status may change as work progresses.</p></div>
+  </div></section>
+
+  <section class="section section-alt" id="principles"><div class="container">
+    <div class="section-heading"><div class="eyebrow">Our Philosophy</div><h2>Human in the <span class="accent">Loop</span></h2><p>Technology can assist people, but important decisions must not lose sight of human judgment, responsibility, and safety.</p></div>
+    <div class="principles-layout"><div class="principles-copy"><h3>People Must Remain Part of the Decision</h3><p>Zen's human-in-the-loop philosophy emphasizes meaningful human oversight in AI-assisted and automated systems, especially when decisions could affect safety, rights, or well-being.</p><p>The goal is not to give technology unlimited authority. It is to explore tools that can support people while making responsibilities, limitations, and opportunities for intervention clear.</p><ul class="principle-list"><li>Human review for important decisions</li><li>Clear responsibility and accountability</li><li>Verification before safety-critical actions</li><li>Respect for people and their well-being</li><li>Careful evaluation of risks and limitations</li></ul></div>
+      <div class="principles-visual" aria-label="Illustration of technology supporting a human decision-maker"><div class="big-z" aria-hidden="true">Z</div><p class="accent">TECHNOLOGY SUPPORTS PEOPLE</p><div class="flow-line"></div><div class="flow-box">System Analysis<small>Information and recommendations</small></div><div class="flow-line"></div><div class="flow-box">Human Review<small>Context, judgment, and verification</small></div><div class="flow-line"></div><div class="flow-box">Accountable Action<small>Subject to appropriate safeguards</small></div></div>
+    </div>
+    <div class="notice"><strong>Design principle, not a certification:</strong><p>This section describes Zen's intended philosophy. It does not claim that every current or future concept already implements these safeguards or has been independently evaluated.</p></div>
+  </div></section>
+
+  <section class="section" id="roadmap"><div class="container">
+    <div class="section-heading"><div class="eyebrow">The Journey Ahead</div><h2>The Zen <span class="accent">Roadmap</span></h2><p>A high-level view of the stages that may guide Zen's growth. This is a directional roadmap, not a promise of specific dates or delivery.</p></div>
+    <div class="timeline">
+      <div class="timeline-item"><span class="status-tag">Early Stage</span><h3>1. Build the Foundation</h3><p>Define the mission, explore ideas, document requirements, and establish a clearer direction for the initiative.</p></div>
+      <div class="timeline-item"><span class="status-tag">Research and Development</span><h3>2. Explore and Prototype</h3><p>Investigate technical possibilities, develop early demonstrations where feasible, and learn from testing and iteration.</p></div>
+      <div class="timeline-item"><span class="status-tag planned">Planned Direction</span><h3>3. Evaluate and Improve</h3><p>Identify limitations, improve documentation, assess risks, and determine which ideas are worth further investment.</p></div>
+      <div class="timeline-item"><span class="status-tag future">Long-Term Possibility</span><h3>4. Explore Collaboration</h3><p>If appropriate, explore feedback, expertise, partnerships, and additional resources to support responsible development.</p></div>
+      <div class="timeline-item"><span class="status-tag future">Future Possibility</span><h3>5. Consider Real-World Applications</h3><p>Evaluate whether mature, adequately tested concepts could responsibly be used to help communities and individuals.</p></div>
+    </div>
+  </div></section>
+
+  <section class="section section-alt" id="insider"><div class="container"><div class="newsletter-panel">
+    <div class="section-heading"><div class="eyebrow">Stay Connected</div><h2>Join <span class="accent">Zen Insider</span></h2><p>A planned newsletter for exclusive project updates, development notes, new ideas, and important announcements from Zen.</p></div>
+    <form class="newsletter-form" id="newsletterForm">
+      <div class="form-row"><div class="form-field"><label for="insiderName">First name (optional)</label><input type="text" id="insiderName" name="firstName" placeholder="Your first name" autocomplete="given-name"></div><div class="form-field"><label for="insiderEmail">Email address</label><input type="email" id="insiderEmail" name="email" placeholder="you@example.com" autocomplete="email" required></div></div>
+      <div class="consent"><input type="checkbox" id="insiderConsent" name="consent" required><label for="insiderConsent">I agree to receive Zen Insider updates by email when subscriptions become available. I understand that I can unsubscribe from future emails.</label></div>
+      <button class="button" type="submit">Join the Interest List →</button>
+      <p class="form-status" id="newsletterStatus" role="status" aria-live="polite"></p>
+      <p class="small-print">Newsletter signups are not active yet. This demonstration does not transmit or store your email address. The form must be connected to an email service before real subscriptions can begin.</p>
+    </form>
+  </div></div></section>
+
+  <section class="section" id="founder"><div class="container">
+    <div class="section-heading"><div class="eyebrow">The Person Behind the Vision</div><h2>A Message From the <span class="accent">Founder</span></h2></div>
+    <div class="founder-card"><div class="founder-avatar" aria-hidden="true">Z</div><div><h3>Building Toward a Better Future</h3><p>Zen was created around the belief that technology should serve people and help make the world a better place. Our vision reaches beyond technology alone: it includes infrastructure, safety, and mental health, with and without technology.</p><p>This is an ongoing journey of learning, developing ideas, and working toward something meaningful. Every step forward is an opportunity to improve, rethink, and build with people in mind.</p><p>The goal is simple: explore ideas that could make a positive difference, while keeping responsibility, transparency, and human well-being at the center.</p><div class="founder-signature">— Violet, Founder of Zen Infrastructure Technologies</div></div></div>
+  </div></section>
+
+  <section class="section section-alt" id="faq"><div class="container">
+    <div class="section-heading"><div class="eyebrow">Frequently Asked Questions</div><h2>Get to Know <span class="accent">Zen</span></h2><p>Have questions about the mission, development, or future direction? Start here.</p></div>
+    <div class="faq-list">
+      <details><summary>What is Zen Infrastructure Technologies?</summary><p>Zen is an early-stage initiative exploring infrastructure technology, safety and security, human-centered systems, and mental health. Its goal is to investigate ideas that could contribute to a better future.</p></details>
+      <details><summary>Is Zen already a fully operating company?</summary><p>Zen is in an early stage of development. This website describes its mission and areas of work; it should not be taken as a claim that every proposed service is operational or commercially available.</p></details>
+      <details><summary>Are Zen's projects available to the public?</summary><p>Availability depends on the individual project. Research topics, concepts, prototypes, and long-term plans are not necessarily finished products or public services.</p></details>
+      <details><summary>Why does Zen emphasize human oversight?</summary><p>Zen's philosophy is that technology should assist people rather than remove human responsibility from important decisions. Human review, clear accountability, and appropriate safeguards are central goals.</p></details>
+      <details><summary>How does Zen approach mental health?</summary><p>Mental health is part of Zen's broader mission. The vision includes exploring supportive ideas both with and without technology. Zen should not be understood as a substitute for qualified mental health care.</p></details>
+      <details><summary>How can I follow Zen's progress?</summary><p>Check this website for updates. The Zen Insider newsletter is a planned way to share news and development updates once a real email subscription service is connected.</p></details>
+      <details><summary>Can I collaborate with Zen?</summary><p>Potential collaboration can be explored as the initiative develops. Any actual opportunity, responsibilities, and terms would need to be discussed and agreed upon separately.</p></details>
+    </div>
+  </div></section>
+
+  <section class="section" id="contact"><div class="container">
+    <div class="section-heading"><div class="eyebrow">Stay Informed</div><h2>Contact and <span class="accent">Transparency</span></h2><p>Clear communication matters. Here's how to stay informed and what to know about this website.</p></div>
+    <div class="contact-layout">
+      <div class="contact-card"><div class="card-icon" aria-hidden="true">✉</div><h3>Get in Touch</h3><p>Interested in Zen's mission or future development? Follow official Zen channels for updates and contact information as it becomes available.</p><p><strong class="accent">Contact email:</strong> Not published yet.</p><p>We will update this section when an official contact address is ready.</p></div>
+      <div class="contact-card" id="privacy"><div class="card-icon" aria-hidden="true">◇</div><h3>Privacy and Website Status</h3><p>This website is a front-end presentation of Zen's mission and development direction.</p><ul class="privacy-list"><li>The newsletter demonstration does not transmit or store submitted information.</li><li>No newsletter subscription is created by clicking the demonstration signup button.</li><li>A real subscription service must be connected before email addresses can be collected for newsletter delivery.</li><li>Any future signup process should explain how information is used and provide a way to unsubscribe.</li></ul></div>
+    </div>
+  </div></section>
+</main>
+<footer class="site-footer"><div class="container footer-inner"><div><p><strong class="accent">ZEN INFRASTRUCTURE TECHNOLOGIES</strong></p><p>Secure Cities. Smart Future.</p><p>© <span id="currentYear"></span> Zen. All rights reserved.</p></div><div class="footer-links"><a href="#about">About</a><a href="#projects">Projects</a><a href="#principles">Principles</a><a href="#insider">Zen Insider</a><a href="#privacy">Privacy</a><a href="#top">Back to Top ↑</a></div></div></footer>
+<a class="back-to-top" href="#top" aria-label="Back to top">↑</a>
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  menuToggle.addEventListener('click', function () {
+    const isOpen = navLinks.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
+    menuToggle.textContent = isOpen ? '✕ Close' : '☰ Menu';
+  });
+  navLinks.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      navLinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.textContent = '☰ Menu';
+    });
+  });
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
+  const newsletterForm = document.getElementById('newsletterForm');
+  const newsletterStatus = document.getElementById('newsletterStatus');
+  newsletterForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+    if (!newsletterForm.checkValidity()) {
+      newsletterForm.reportValidity();
+      return;
+    }
+    newsletterStatus.textContent = 'Thanks for your interest in Zen Insider! Subscriptions are not active yet, and your information has not been sent or saved.';
+  });
+</script>
 </body>
 </html>
