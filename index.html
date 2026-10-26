@@ -2,434 +2,2666 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#050a14">
-<title>ZIRA — Zen Intelligence &amp; Risk Analysis</title>
-<meta name="description" content="Explore ZIRA, the planned intelligence and risk analysis division of Zen Infrastructure Technologies.">
+
+<title>Zen Infrastructure Technologies | Secure Cities. Smart Future.</title>
+
+<meta name="description" content="Zen Infrastructure Technologies is an early-stage initiative exploring smarter infrastructure, public safety concepts, responsible technology, mental well-being, and ZIRA — Zen Intelligence & Risk Analysis.">
+
 <style>
 :root {
   --bg: #050a14;
-  --bg2: #0a1424;
+  --bg2: #081525;
+  --panel: #0d1b30;
+  --panel2: #10233a;
   --green: #39ff88;
   --cyan: #22d3ee;
-  --text: #f2f7ff;
-  --muted: #9fb0c7;
-  --line: rgba(120,170,220,.2);
-  --amber: #fbbf24;
-  --card: rgba(14,26,46,.78);
+  --text: #f0f7ff;
+  --muted: #a4b5c9;
+  --line: rgba(100, 165, 210, .22);
+  --warning: #ffce73;
+  --red: #ff7285;
+  --radius: 16px;
 }
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font: 16px/1.65 "Segoe UI", system-ui, sans-serif;
-  background-image:
-    linear-gradient(var(--line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line) 1px, transparent 1px);
-  background-size: 56px 56px;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  line-height: 1.65;
 }
-a { color: var(--cyan); }
-a:focus-visible, button:focus-visible {
-  outline: 3px solid var(--cyan);
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(
+      ellipse at 90% 0%,
+      rgba(34,211,238,.08),
+      transparent 45%
+    ),
+    linear-gradient(
+      rgba(57,255,136,.018) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(57,255,136,.018) 1px,
+      transparent 1px
+    );
+  background-size: auto, 50px 50px, 50px 50px;
+}
+
+a {
+  color: var(--cyan);
+}
+
+button, input, select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+:focus-visible {
+  outline: 2px solid var(--cyan);
   outline-offset: 4px;
 }
-.wrap { width: min(1100px, calc(100% - 36px)); margin: auto; }
-header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: rgba(5,10,20,.94);
-  border-bottom: 1px solid var(--line);
-  backdrop-filter: blur(12px);
+
+.container {
+  width: min(1180px, calc(100% - 36px));
+  margin: auto;
 }
-nav {
-  min-height: 68px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+
+section {
+  padding: 88px 0;
 }
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--text);
-  text-decoration: none;
+
+section:nth-of-type(even) {
+  background: rgba(8,21,37,.65);
+}
+
+h1, h2, h3 {
+  line-height: 1.18;
+}
+
+h1 {
+  font-size: clamp(3rem, 7vw, 5.6rem);
+  margin: 18px 0;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 12px 0 20px;
+}
+
+h3 {
+  margin-top: 0;
+}
+
+p {
+  max-width: 75ch;
+}
+
+.accent {
+  color: var(--green);
+}
+
+.cyan {
+  color: var(--cyan);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.eyebrow {
+  color: var(--green);
+  font-size: .8rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
   font-weight: 800;
 }
-.brand-mark {
-  display: grid;
-  place-items: center;
-  width: 38px;
-  height: 38px;
-  border: 2px solid var(--green);
-  border-radius: 10px;
-  color: var(--cyan);
-  font-size: 22px;
-  font-weight: 900;
+
+.lead {
+  font-size: 1.12rem;
+  color: var(--muted);
 }
-.navlinks { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
-.navlinks a { text-decoration: none; }
-.btn {
-  display: inline-block;
-  padding: 10px 17px;
-  border: 1px solid var(--green);
-  border-radius: 9px;
+
+.small {
+  font-size: .86rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, 250px), 1fr)
+  );
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.card {
+  padding: 25px;
+  border-radius: var(--radius);
+  background: linear-gradient(
+    150deg,
+    rgba(17,39,62,.96),
+    rgba(9,23,42,.96)
+  );
+  border: 1px solid var(--line);
+  transition: border-color .2s, transform .2s;
+}
+
+.card:hover {
+  border-color: rgba(57,255,136,.5);
+  transform: translateY(-3px);
+}
+
+.card h3 {
   color: var(--green);
+}
+
+.card p {
+  color: var(--muted);
+}
+
+.card-icon {
+  color: var(--cyan);
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.tag {
+  display: inline-block;
+  border: 1px solid var(--warning);
+  color: var(--warning);
+  padding: 4px 11px;
+  border-radius: 999px;
+  font-size: .73rem;
+  font-weight: 800;
+  letter-spacing: .04em;
+}
+
+.tag.current {
+  color: var(--green);
+  border-color: var(--green);
+}
+
+.tag.demo {
+  color: var(--cyan);
+  border-color: var(--cyan);
+}
+
+.notice {
+  padding: 18px 20px;
+  border: 1px solid rgba(255,206,115,.55);
+  background: rgba(255,206,115,.055);
+  border-radius: 12px;
+  margin: 24px 0;
+  color: #ffe9bd;
+}
+
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 21px;
+  border: 1px solid var(--green);
+  border-radius: 10px;
   background: transparent;
-  font: inherit;
-  font-weight: 700;
+  color: var(--green);
+  font-weight: 750;
   text-decoration: none;
   transition: .2s;
 }
-.btn:hover { background: var(--green); color: #03120a; }
-.btn.primary { background: var(--green); color: #03120a; }
-section { padding: 76px 0; }
-.hero { padding: 90px 0 75px; }
-.eyebrow {
-  color: var(--green);
-  font-size: .85rem;
-  font-weight: 800;
-  letter-spacing: .15em;
-  text-transform: uppercase;
+
+.btn:hover {
+  background: rgba(57,255,136,.12);
 }
-h1, h2, h3 { line-height: 1.18; }
-h1 { font-size: clamp(2.5rem, 7vw, 5rem); margin: 14px 0; }
-h2 { font-size: clamp(1.8rem, 4vw, 2.7rem); margin-top: 0; }
-h3 { font-size: 1.2rem; }
-p { max-width: 72ch; }
-.lead { color: var(--muted); font-size: 1.1rem; }
-.accent { color: var(--green); }
-.cyan { color: var(--cyan); }
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.35fr .65fr;
-  gap: 35px;
+
+.btn.primary {
+  background: var(--green);
+  color: #06150c;
+}
+
+.btn.primary:hover {
+  background: #75ffad;
+}
+
+.btn.secondary {
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+/* NAVIGATION */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(5,10,20,.96);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+
+nav {
+  min-height: 76px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  gap: 15px;
 }
-.emblem {
-  width: min(100%, 300px);
-  aspect-ratio: 1;
-  margin: auto;
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+  text-decoration: none;
+  font-weight: 850;
+}
+
+.brand-logo {
+  width: 44px;
+  height: 44px;
   display: grid;
   place-items: center;
-  border: 1px solid rgba(57,255,136,.5);
-  border-radius: 50%;
-  background:
-    radial-gradient(circle, rgba(34,211,238,.12), transparent 58%),
-    rgba(10,20,36,.85);
-  box-shadow: 0 0 45px rgba(57,255,136,.1), inset 0 0 35px rgba(34,211,238,.08);
-  position: relative;
+  border: 2px solid var(--green);
+  border-radius: 12px;
+  font-size: 26px;
+  color: var(--green);
+  box-shadow: 0 0 23px rgba(57,255,136,.15);
 }
-.emblem::before, .emblem::after {
+
+.brand-name {
+  line-height: 1.15;
+}
+
+.brand-name span {
+  display: block;
+  color: var(--muted);
+  font-size: .65rem;
+  font-weight: 500;
+}
+
+.navlinks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 17px;
+}
+
+.navlinks a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: .85rem;
+  font-weight: 600;
+}
+
+.navlinks a:hover,
+.navlinks a.highlight {
+  color: var(--green);
+}
+
+.menu-button {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: white;
+  padding: 8px 13px;
+}
+
+/* HERO */
+
+.hero {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  background:
+    radial-gradient(
+      ellipse at 80% 50%,
+      rgba(34,211,238,.1),
+      transparent 55%
+    );
+}
+
+.hero-layout {
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  align-items: center;
+  gap: 35px;
+}
+
+.hero-description {
+  max-width: 610px;
+  font-size: 1.13rem;
+  color: var(--muted);
+}
+
+.system-line {
+  color: var(--cyan);
+  font-size: .78rem;
+  letter-spacing: .12em;
+  font-family: monospace;
+  margin-bottom: 14px;
+}
+
+/* FUTURISTIC CITY GRAPHIC */
+
+.city-visual {
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(34,211,238,.14),
+      transparent 65%
+    ),
+    #081525;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  position: relative;
+  min-height: 400px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.city-visual::before {
   content: "";
   position: absolute;
-  inset: 12%;
-  border: 1px dashed rgba(34,211,238,.45);
-  border-radius: 50%;
+  inset: 0;
+  background:
+    linear-gradient(
+      rgba(34,211,238,.08) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(34,211,238,.08) 1px,
+      transparent 1px
+    );
+  background-size: 32px 32px;
+  transform: perspective(400px) rotateX(25deg) scale(1.3);
 }
-.emblem::after {
-  inset: 23%;
-  border-style: solid;
-  border-color: rgba(57,255,136,.35);
-}
-.emblem span {
+
+.city-visual svg {
   position: relative;
-  z-index: 1;
-  font-size: clamp(4rem, 12vw, 7rem);
-  font-weight: 900;
+  width: 95%;
+  max-width: 500px;
+  filter: drop-shadow(0 0 18px rgba(57,255,136,.18));
+}
+
+.city-label {
+  position: absolute;
+  bottom: 22px;
   color: var(--green);
-  text-shadow: 0 0 25px rgba(57,255,136,.4);
+  font-family: monospace;
+  font-size: .75rem;
+  letter-spacing: .1em;
 }
-.notice {
-  margin: 25px 0;
-  padding: 15px 18px;
-  border: 1px solid var(--amber);
-  border-radius: 10px;
-  background: rgba(251,191,36,.06);
-  color: #fde9b0;
+
+.city-visual .pulse {
+  animation: nodePulse 3s ease-in-out infinite;
 }
-.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 25px; }
-.grid {
+
+@keyframes nodePulse {
+  50% { opacity: .3; }
+}
+
+/* FEATURE METRICS */
+
+.metric-strip {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 245px), 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 45px;
+}
+
+.metric {
+  border-top: 2px solid var(--green);
+  padding-top: 15px;
+}
+
+.metric strong {
+  display: block;
+  color: var(--green);
+  font-size: 1.5rem;
+}
+
+.metric span {
+  color: var(--muted);
+  font-size: .84rem;
+}
+
+/* DASHBOARD */
+
+.dashboard {
+  background: #040d19;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  margin-top: 32px;
+}
+
+.dashboard-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  padding: 18px 22px;
+  background: #0f2036;
+  border-bottom: 1px solid var(--line);
+}
+
+.dashboard-header strong {
+  color: var(--green);
+  font-family: monospace;
+}
+
+.dashboard-body {
+  padding: 25px;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, 230px), 1fr)
+  );
+  gap: 16px;
+}
+
+.data-box {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px;
+  background: #091a2b;
+}
+
+.data-value {
+  color: var(--green);
+  font-size: 1.8rem;
+  font-weight: 850;
+}
+
+.terminal {
+  background: #020a13;
+  border: 1px solid #23516c;
+  border-radius: 10px;
+  padding: 20px;
+  color: var(--green);
+  font-family: monospace;
+  font-size: .83rem;
+  margin-top: 20px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* SIMULATOR */
+
+.sim-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 30px;
+}
+
+.control-panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 25px;
+}
+
+.control-panel label {
+  display: block;
+  margin: 14px 0 7px;
+  color: var(--muted);
+}
+
+.control-panel select,
+.control-panel input[type="range"] {
+  width: 100%;
+}
+
+.control-panel select {
+  background: #061321;
+  border: 1px solid #355674;
+  color: white;
+  border-radius: 9px;
+  padding: 12px;
+}
+
+input[type="range"] {
+  accent-color: var(--green);
+}
+
+.sim-result {
+  background: #061422;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 25px;
+}
+
+.big-score {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 850;
+  color: var(--green);
+  line-height: 1.2;
+}
+
+.progress {
+  width: 100%;
+  height: 11px;
+  background: #172c42;
+  border-radius: 99px;
+  overflow: hidden;
+  margin: 18px 0;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--green);
+  transition: width .4s ease;
+}
+
+/* PROJECTS */
+
+.filterbar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
   margin-top: 25px;
 }
-.card {
-  background: var(--card);
+
+.filterbar button {
+  padding: 8px 17px;
   border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 23px;
-}
-.card h3 { color: var(--green); margin-top: 0; }
-.card p, .muted { color: var(--muted); }
-.icon { font-size: 1.8rem; margin-bottom: 10px; }
-.status {
-  display: inline-block;
-  border: 1px solid var(--amber);
   border-radius: 99px;
-  padding: 3px 10px;
-  color: var(--amber);
-  font-size: .78rem;
-  font-weight: 800;
-  letter-spacing: .05em;
+  background: var(--panel);
+  color: white;
 }
-.steps { counter-reset: step; }
-.steps .card { position: relative; }
-footer {
-  border-top: 1px solid var(--line);
-  background: var(--bg2);
-  padding: 30px 0;
+
+.filterbar button.active {
+  background: var(--green);
+  color: #06150c;
+}
+
+.project-extra {
+  margin-top: 15px;
+  font-size: .86rem;
+  color: var(--cyan);
+}
+
+/* ZIRA */
+
+.zira-hero {
+  border: 1px solid rgba(57,255,136,.35);
+  border-radius: 24px;
+  background:
+    radial-gradient(
+      circle at 80% 30%,
+      rgba(34,211,238,.14),
+      transparent 40%
+    ),
+    linear-gradient(
+      125deg,
+      #0e2137,
+      #060d19
+    );
+  padding: clamp(25px, 5vw, 55px);
+  margin: 30px 0;
+}
+
+.zira-mark {
+  width: 100px;
+  height: 100px;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--cyan);
+  border-radius: 50%;
+  color: var(--green);
+  font-size: 3.6rem;
+  font-weight: 900;
+  box-shadow: 0 0 38px rgba(34,211,238,.18);
+  margin-bottom: 22px;
+}
+
+.zira-title {
+  font-size: clamp(3.5rem, 9vw, 6rem);
+  line-height: 1;
+  font-weight: 900;
+  color: var(--green);
+}
+
+.subheading {
+  font-size: 1.25rem;
+  color: var(--cyan);
+  font-weight: 700;
+  margin: 12px 0;
+}
+
+.risk-output {
+  background: #05121f;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 18px;
+  margin-top: 18px;
+}
+
+/* ROADMAP */
+
+.timeline {
+  margin-top: 35px;
+  padding-left: 24px;
+  border-left: 2px solid rgba(57,255,136,.35);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 22px;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  top: 24px;
+  left: -32px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--green);
+}
+
+/* NEWSLETTER */
+
+.newsletter {
+  padding: 36px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #10263b, #061421);
+  border: 1px solid rgba(34,211,238,.35);
+}
+
+.newsletter-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.newsletter input {
+  background: #061321;
+  border: 1px solid #355674;
+  border-radius: 10px;
+  padding: 13px;
+  color: white;
+  flex: 1;
+  min-width: 190px;
+}
+
+/* FAQ */
+
+details {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 17px 20px;
+  margin: 12px 0;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: 750;
+  color: var(--cyan);
+}
+
+details p {
   color: var(--muted);
-  font-size: .9rem;
 }
-footer a { margin-right: 16px; }
-@media (max-width: 720px) {
-  .hero-grid { grid-template-columns: 1fr; }
-  .emblem { width: 205px; }
-  nav { align-items: flex-start; padding: 14px 0; }
-  .navlinks { justify-content: flex-end; gap: 10px; font-size: .9rem; }
-  section { padding: 55px 0; }
+
+/* FOOTER */
+
+footer {
+  background: #030a12;
+  border-top: 1px solid var(--line);
+  padding: 45px 0;
 }
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin: 18px 0;
+}
+
+.footer-links a {
+  text-decoration: none;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1050px) {
+  nav {
+    flex-wrap: wrap;
+    padding: 12px 0;
+  }
+
+  .menu-button {
+    display: block;
+  }
+
+  .navlinks {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 14px;
+    gap: 13px;
+  }
+
+  .navlinks.open {
+    display: flex;
+  }
+}
+
+@media (max-width: 800px) {
+  .hero-layout,
+  .sim-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: auto;
+  }
+
+  .city-visual {
+    min-height: 300px;
+  }
+
+  .metric-strip {
+    grid-template-columns: 1fr;
+  }
+
+  section {
+    padding: 58px 0;
+  }
+
+  .newsletter {
+    padding: 23px;
+  }
+
+  .newsletter-fields {
+    flex-direction: column;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
 }
 </style>
 </head>
+
 <body>
+
+<!-- NAVIGATION -->
+
 <header>
-  <div class="wrap">
-    <nav aria-label="ZIRA navigation">
-      <a class="brand" href="index.html" aria-label="Return to Zen homepage">
-        <span class="brand-mark" aria-hidden="true">Z</span>
-        <span>ZEN <span class="muted">/</span> ZIRA</span>
+  <div class="container">
+    <nav aria-label="Main navigation">
+
+      <a class="brand" href="#home">
+        <span class="brand-logo">Z</span>
+        <span class="brand-name">
+          ZEN
+          <span>Infrastructure Technologies</span>
+        </span>
       </a>
-      <div class="navlinks">
-        <a href="#mission">Mission</a>
-        <a href="#focus">Focus Areas</a>
-        <a href="#principles">Principles</a>
-        <a class="btn" href="index.html">Main Zen Website ↗</a>
+
+      <button
+        class="menu-button"
+        id="menuButton"
+        aria-expanded="false"
+        aria-controls="navlinks"
+        aria-label="Toggle navigation"
+      >
+        ☰ Menu
+      </button>
+
+      <div class="navlinks" id="navlinks">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#simulator">Simulator</a>
+        <a href="#oversight">Human Oversight</a>
+        <a href="#projects">Projects</a>
+        <a href="#zira" class="highlight">ZIRA</a>
+        <a href="#wellbeing">Well-being</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#insider">Zen Insider</a>
       </div>
+
     </nav>
   </div>
 </header>
 
 <main>
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <p class="eyebrow">A Zen Infrastructure Technologies Division</p>
-      <h1><span class="accent">ZIRA</span></h1>
-      <h2>Zen Intelligence &amp; Risk Analysis</h2>
-      <p class="lead">
-        Exploring responsible approaches to intelligence, technical risk
-        analysis, cybersecurity research, and infrastructure resilience.
-      </p>
-      <div class="notice" role="note">
-        <strong>Early-stage development</strong><br>
-        ZIRA's direction and intended focus areas are confirmed.
-        Its capabilities, services, and operations remain under development
-        and are not represented as fully operational.
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+  <div class="container">
+
+    <div class="hero-layout">
+
+      <div>
+        <p class="system-line">
+          ZEN SYSTEMS // RESEARCH & DEVELOPMENT
+        </p>
+
+        <p class="eyebrow">
+          Infrastructure. Innovation. Humanity.
+        </p>
+
+        <h1>
+          Secure Cities.<br>
+          <span class="accent">Smart Future.</span>
+        </h1>
+
+        <p class="hero-description">
+          Zen Infrastructure Technologies is an early-stage
+          technology initiative exploring smarter
+          infrastructure, safer communities, responsible
+          innovation, and better ways to support people.
+        </p>
+
+        <p class="hero-description">
+          Our vision is a future where technology and
+          human judgment work together to address
+          real-world challenges.
+        </p>
+
+        <div class="actions">
+          <a class="btn primary" href="#about">
+            Explore Zen →
+          </a>
+          <a class="btn secondary" href="#zira">
+            Explore ZIRA
+          </a>
+        </div>
+
+        <div class="metric-strip">
+          <div class="metric">
+            <strong>R&D</strong>
+            <span>Current development stage</span>
+          </div>
+
+          <div class="metric">
+            <strong>Human First</strong>
+            <span>Our technology philosophy</span>
+          </div>
+
+          <div class="metric">
+            <strong>ZIRA</strong>
+            <span>Planned intelligence division</span>
+          </div>
+        </div>
       </div>
-      <div class="actions">
-        <a class="btn primary" href="#mission">Explore ZIRA</a>
-        <a class="btn" href="index.html">Back to Zen</a>
+
+      <div class="city-visual">
+        <svg
+          viewBox="0 0 500 370"
+          role="img"
+          aria-label="Illustration of a connected futuristic city"
+        >
+          <defs>
+            <linearGradient id="buildings" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#1e6680"/>
+              <stop offset="100%" stop-color="#0a2539"/>
+            </linearGradient>
+          </defs>
+
+          <g fill="url(#buildings)" stroke="#22d3ee" stroke-width="1.5">
+            <rect x="20" y="190" width="65" height="130"/>
+            <rect x="98" y="125" width="82" height="195"/>
+            <rect x="196" y="65" width="95" height="255"/>
+            <rect x="307" y="155" width="70" height="165"/>
+            <rect x="390" y="105" width="85" height="215"/>
+          </g>
+
+          <g stroke="#39ff88" stroke-width="2" opacity=".85">
+            <path d="M52 215L139 165L243 110L340 180L430 145" fill="none"/>
+            <path d="M52 215L243 270L430 145" fill="none"/>
+            <path d="M139 165L340 180" fill="none"/>
+          </g>
+
+          <g fill="#39ff88">
+            <circle class="pulse" cx="52" cy="215" r="7"/>
+            <circle class="pulse" cx="139" cy="165" r="7"/>
+            <circle class="pulse" cx="243" cy="110" r="8"/>
+            <circle class="pulse" cx="340" cy="180" r="7"/>
+            <circle class="pulse" cx="430" cy="145" r="7"/>
+          </g>
+
+          <g fill="#22d3ee" opacity=".7">
+            <rect x="112" y="145" width="10" height="9"/>
+            <rect x="136" y="145" width="10" height="9"/>
+            <rect x="213" y="90" width="12" height="11"/>
+            <rect x="250" y="90" width="12" height="11"/>
+            <rect x="325" y="205" width="12" height="11"/>
+            <rect x="407" y="170" width="12" height="11"/>
+          </g>
+        </svg>
+
+        <span class="city-label">
+          CONCEPT NETWORK // ILLUSTRATIVE
+        </span>
       </div>
+
     </div>
-    <div class="emblem" role="img" aria-label="Stylized ZIRA technology emblem">
-      <span>Z</span>
-    </div>
+
   </div>
 </section>
 
-<section id="mission">
-  <div class="wrap">
-    <p class="eyebrow">Our Direction</p>
-    <h2>Purposeful Analysis. Responsible Progress.</h2>
+<!-- ABOUT -->
+
+<section id="about">
+  <div class="container">
+
+    <p class="eyebrow">Who We Are</p>
+
+    <h2>
+      Technology With
+      <span class="accent">Purpose.</span>
+    </h2>
+
     <p class="lead">
-      ZIRA is being developed as a division of Zen Infrastructure Technologies
-      focused on understanding risks, researching technical incidents, and
-      exploring ways to strengthen digital systems and civilian infrastructure.
+      Zen is more than an interest in advanced technology.
+      Our mission is to explore practical ideas that can
+      improve infrastructure, support communities,
+      and make a meaningful difference in people's lives.
     </p>
-    <p class="muted">
-      The mission is established as a direction for development, not a claim
-      that every proposed capability is already available.
-    </p>
-  </div>
-</section>
 
-<section id="focus">
-  <div class="wrap">
-    <p class="eyebrow">Intended Research Areas</p>
-    <h2>What ZIRA Is Being Developed to Explore</h2>
+    <p>
+      Zen Infrastructure Technologies is currently an
+      independent, early-stage initiative focused on
+      research, concepts, and prototype development.
+      Our planned capabilities are not presented as
+      fully operating commercial services.
+    </p>
+
     <div class="grid">
+
       <article class="card">
-        <div class="icon" aria-hidden="true">⌕</div>
-        <h3>Intelligence &amp; Information Analysis</h3>
+        <div class="card-icon">▦</div>
+        <h3>Smart Infrastructure</h3>
         <p>
-          Exploring responsible ways to organize information, evaluate
-          evidence, and support informed decisions.
+          Exploring ways technology could help understand
+          transportation, utilities, and civilian
+          infrastructure systems.
         </p>
       </article>
+
       <article class="card">
-        <div class="icon" aria-hidden="true">◈</div>
-        <h3>Risk Identification</h3>
+        <div class="card-icon">◇</div>
+        <h3>Public Safety Concepts</h3>
         <p>
-          Studying methods for identifying potential risks, evaluating
-          uncertainty, and documenting findings.
+          Researching responsible tools that may improve
+          awareness, communication, and human decision-making.
         </p>
       </article>
+
       <article class="card">
-        <div class="icon" aria-hidden="true">⌘</div>
-        <h3>Cybersecurity Research</h3>
+        <div class="card-icon">⌘</div>
+        <h3>Cybersecurity</h3>
         <p>
-          Exploring defensive security concepts, vulnerability awareness,
-          and responsible technical incident analysis.
+          Exploring defensive security, risk awareness,
+          and ways to strengthen the resilience of systems.
         </p>
       </article>
+
       <article class="card">
-        <div class="icon" aria-hidden="true">⌂</div>
-        <h3>Infrastructure Resilience</h3>
+        <div class="card-icon">♡</div>
+        <h3>Mental Well-being</h3>
         <p>
-          Researching concepts that could help infrastructure owners
-          understand technical risks and plan for resilience.
+          Exploring community-centered support, with
+          and without technology, because people matter.
         </p>
       </article>
+
     </div>
+
   </div>
 </section>
 
-<section id="principles">
-  <div class="wrap">
-    <p class="eyebrow">How We Intend to Work</p>
-    <h2>Responsible Intelligence</h2>
-    <div class="grid">
-      <article class="card">
-        <h3>Human Oversight</h3>
-        <p>
-          Technology can assist analysis, but important decisions require
-          appropriate human review and accountability.
-        </p>
-      </article>
-      <article class="card">
-        <h3>Privacy &amp; Security</h3>
-        <p>
-          Privacy, access controls, and protection of sensitive information
-          should be considered from the beginning.
-        </p>
-      </article>
-      <article class="card">
-        <h3>Evidence &amp; Transparency</h3>
-        <p>
-          Findings should distinguish verified facts from assumptions,
-          uncertainties, and preliminary assessments.
-        </p>
-      </article>
-      <article class="card">
-        <h3>Responsible Boundaries</h3>
-        <p>
-          Any future activities would need appropriate authorization,
-          legal review, safeguards, and qualified expertise.
-        </p>
-      </article>
-    </div>
-    <p class="lead" style="margin-top:28px">
-      <strong class="accent">AI can assist. Humans remain accountable.</strong>
-    </p>
-  </div>
-</section>
-
-<section id="roadmap">
-  <div class="wrap">
-    <p class="eyebrow">Development Roadmap</p>
-    <h2>Building the Foundation</h2>
-    <p class="lead">
-      These are development areas, not promises of launch dates or
-      currently available services.
-    </p>
-    <div class="grid steps">
-      <article class="card">
-        <span class="status">EARLY DEVELOPMENT</span>
-        <h3>Define the Mission</h3>
-        <p>
-          Establish the division's scope, principles, intended role,
-          and boundaries within Zen.
-        </p>
-      </article>
-      <article class="card">
-        <span class="status">PLANNED</span>
-        <h3>Research &amp; Feasibility</h3>
-        <p>
-          Evaluate ideas, technical requirements, risks, and the expertise
-          needed before developing specific capabilities.
-        </p>
-      </article>
-      <article class="card">
-        <span class="status">PLANNED</span>
-        <h3>Validation &amp; Safeguards</h3>
-        <p>
-          Define appropriate testing, privacy protections, security reviews,
-          and human oversight before any real-world use.
-        </p>
-      </article>
-    </div>
-    <div class="notice">
-      These roadmap descriptions indicate development intentions.
-      They do not mean that the listed work is completed or that a launch
-      date has been established.
-    </div>
-  </div>
-</section>
+<!-- DEVELOPMENT STATUS -->
 
 <section id="status">
-  <div class="wrap">
-    <p class="eyebrow">Current Status</p>
-    <h2>An Initiative in Development</h2>
-    <div class="card">
-      <p>
-        ZIRA is a planned division of Zen Infrastructure Technologies.
-        Its purpose and intended areas of focus are established, while
-        its technical capabilities and operational readiness remain
-        under development.
-      </p>
-      <p>
-        ZIRA is not a government agency and does not claim affiliation
-        with the FBI, law enforcement, or any government organization.
-        It does not claim official law-enforcement authority.
-      </p>
-      <p class="muted">
-        No operational services, live monitoring, active investigations,
-        deployments, certifications, or partnerships are implied by this page.
-      </p>
+  <div class="container">
+
+    <p class="eyebrow">Transparency</p>
+
+    <h2>
+      Where Zen
+      <span class="accent">Stands Today.</span>
+    </h2>
+
+    <p class="lead">
+      We distinguish active development from proposed
+      capabilities and long-term ambitions.
+    </p>
+
+    <div class="grid">
+
+      <div class="card">
+        <span class="tag current">CURRENT</span>
+        <h3>Research & Development</h3>
+        <p>
+          Establishing project direction, exploring
+          technical concepts, and developing
+          early demonstrations.
+        </p>
+      </div>
+
+      <div class="card">
+        <span class="tag demo">DEMONSTRATION</span>
+        <h3>Interactive Website Systems</h3>
+        <p>
+          The simulations on this website are working
+          educational demonstrations, not real
+          infrastructure monitoring tools.
+        </p>
+      </div>
+
+      <div class="card">
+        <span class="tag">PLANNED</span>
+        <h3>ZIRA Division Development</h3>
+        <p>
+          Defining intelligence analysis,
+          technical research, and risk
+          assessment concepts.
+        </p>
+      </div>
+
+      <div class="card">
+        <span class="tag">FUTURE</span>
+        <h3>Operational Applications</h3>
+        <p>
+          Potential real-world applications would
+          require resources, testing, safeguards,
+          authorization, and qualified professionals.
+        </p>
+      </div>
+
     </div>
+
+    <div class="notice">
+      <strong>Development disclosure:</strong>
+      Zen is an early-stage initiative. Website
+      demonstrations do not imply operational
+      emergency services, active surveillance,
+      live infrastructure monitoring, government
+      approval, or deployed public safety systems.
+    </div>
+
   </div>
 </section>
+
+<!-- DASHBOARD -->
+
+<section id="dashboard">
+  <div class="container">
+
+    <p class="eyebrow">Zen Technology Lab</p>
+
+    <h2>
+      Infrastructure
+      <span class="accent">Dashboard.</span>
+    </h2>
+
+    <p class="lead">
+      A demonstration interface showing how future
+      infrastructure information might be organized
+      for human review.
+    </p>
+
+    <div class="dashboard">
+
+      <div class="dashboard-header">
+        <strong>ZEN // CONCEPT CONTROL CENTER</strong>
+        <span class="tag demo">SIMULATED DATA</span>
+      </div>
+
+      <div class="dashboard-body">
+
+        <div class="dashboard-grid">
+
+          <div class="data-box">
+            <p class="muted small">System Mode</p>
+            <div class="data-value">DEMO</div>
+            <p class="small muted">
+              No external connections
+            </p>
+          </div>
+
+          <div class="data-box">
+            <p class="muted small">Operator Model</p>
+            <div class="data-value">HITL</div>
+            <p class="small muted">
+              Human-in-the-loop concept
+            </p>
+          </div>
+
+          <div class="data-box">
+            <p class="muted small">Research Stage</p>
+            <div class="data-value">R&D</div>
+            <p class="small muted">
+              Early-stage development
+            </p>
+          </div>
+
+        </div>
+
+        <div class="terminal" id="dashboardTerminal" aria-live="polite">ZEN SYSTEMS // DEMONSTRATION ENVIRONMENT
+----------------------------------------
+Interface loaded successfully.
+Infrastructure connections: NONE
+Live sensor connections: NONE
+Current mode: EDUCATIONAL SIMULATION
+Human oversight principle: ENABLED
+
+Select a scenario below to explore.</div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- CITY SIMULATOR -->
+
+<section id="simulator">
+  <div class="container">
+
+    <p class="eyebrow">Interactive Research Demo</p>
+
+    <h2>
+      Connected City
+      <span class="accent">Simulator.</span>
+    </h2>
+
+    <p class="lead">
+      Experiment with fictional infrastructure scenarios.
+      The system generates illustrative outcomes using
+      predefined rules rather than live city information.
+    </p>
+
+    <div class="sim-layout">
+
+      <div class="control-panel">
+
+        <h3>Simulation Controls</h3>
+
+        <label for="scenario">
+          Infrastructure System
+        </label>
+
+        <select id="scenario">
+          <option value="traffic">
+            Transportation Network
+          </option>
+          <option value="power">
+            Electrical Distribution
+          </option>
+          <option value="water">
+            Water Infrastructure
+          </option>
+          <option value="communication">
+            Communication Network
+          </option>
+        </select>
+
+        <label for="intensity">
+          Simulated System Stress:
+          <strong id="intensityValue">40%</strong>
+        </label>
+
+        <input
+          id="intensity"
+          type="range"
+          min="0"
+          max="100"
+          value="40"
+        >
+
+        <button class="btn primary" id="runSimulation">
+          Run Simulation →
+        </button>
+
+        <p class="small muted">
+          No real sensors, utilities, or public systems
+          are connected to this demonstration.
+        </p>
+
+      </div>
+
+      <div class="sim-result">
+
+        <span class="tag demo">SIMULATION OUTPUT</span>
+
+        <p class="muted">Illustrative Stability Score</p>
+
+        <div class="big-score" id="stabilityScore">
+          --
+        </div>
+
+        <div class="progress">
+          <div
+            class="progress-fill"
+            id="stabilityBar"
+          ></div>
+        </div>
+
+        <h3 id="simulationTitle">
+          Awaiting Scenario
+        </h3>
+
+        <p id="simulationDescription" class="muted">
+          Choose your settings and run a simulation.
+        </p>
+
+        <p class="small muted" id="simulationRecommendation">
+          A human would review any real-world
+          operational decision.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- HUMAN OVERSIGHT -->
+
+<section id="oversight">
+  <div class="container">
+
+    <p class="eyebrow">Our Core Philosophy</p>
+
+    <h2>
+      Humans Remain
+      <span class="accent">In Control.</span>
+    </h2>
+
+    <p class="lead">
+      Zen supports responsible technology that
+      assists people instead of replacing
+      their judgment in important decisions.
+    </p>
+
+    <div class="grid">
+
+      <article class="card">
+        <div class="card-icon">01</div>
+        <h3>System Detection</h3>
+        <p>
+          A technical system may identify information
+          or flag a possible issue.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-icon">02</div>
+        <h3>Human Verification</h3>
+        <p>
+          An appropriately qualified person reviews
+          the evidence and available context.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-icon">03</div>
+        <h3>Accountable Decision</h3>
+        <p>
+          Decisions follow appropriate authorization,
+          safeguards, and established responsibility.
+        </p>
+      </article>
+
+    </div>
+
+    <div class="dashboard">
+
+      <div class="dashboard-header">
+        <strong>HUMAN REVIEW // WORKFLOW DEMO</strong>
+        <span class="tag demo">NOT OPERATIONAL</span>
+      </div>
+
+      <div class="dashboard-body">
+
+        <h3>Simulated Alert Review</h3>
+
+        <p id="alertStatus" class="cyan" aria-live="polite">
+          No alert generated.
+        </p>
+
+        <p id="alertDescription" class="muted">
+          Generate a sample infrastructure alert
+          to practice a human review workflow.
+        </p>
+
+        <div class="actions">
+
+          <button class="btn primary" id="generateAlert">
+            Generate Sample Alert
+          </button>
+
+          <button class="btn" id="reviewAlert" disabled>
+            Escalate for Review
+          </button>
+
+          <button class="btn secondary" id="dismissAlert" disabled>
+            Dismiss Alert
+          </button>
+
+        </div>
+
+        <div
+          class="terminal"
+          id="oversightLog"
+          aria-live="polite"
+        >ZEN OVERSIGHT DEMO
+Awaiting simulated activity.</div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects">
+  <div class="container">
+
+    <p class="eyebrow">Explore Our Direction</p>
+
+    <h2>
+      Zen Projects &
+      <span class="accent">Initiatives.</span>
+    </h2>
+
+    <p class="lead">
+      Explore current demonstrations, early
+      research areas, and planned initiatives.
+    </p>
+
+    <div class="filterbar" aria-label="Project filters">
+      <button class="active" data-filter="All" aria-pressed="true">All</button>
+      <button data-filter="Demo" aria-pressed="false">Demonstrations</button>
+      <button data-filter="Research" aria-pressed="false">Research</button>
+      <button data-filter="Planned" aria-pressed="false">Planned</button>
+    </div>
+
+    <div class="grid" id="projectGrid"></div>
+
+  </div>
+</section>
+
+<!-- ZIRA DIVISION -->
+
+<section id="zira">
+  <div class="container">
+
+    <p class="eyebrow">
+      Zen Infrastructure Technologies // Planned Division
+    </p>
+
+    <div class="zira-hero">
+
+      <div class="zira-mark" aria-hidden="true">
+        Z
+      </div>
+
+      <div class="zira-title">
+        ZIRA
+      </div>
+
+      <p class="subheading">
+        Zen Intelligence &amp; Risk Analysis
+      </p>
+
+      <p class="lead">
+        A planned division of Zen Infrastructure
+        Technologies focused on exploring responsible
+        intelligence analysis, technical risk research,
+        cybersecurity, and infrastructure resilience.
+      </p>
+
+      <div class="actions">
+        <a class="btn primary" href="#zira-mission">
+          Explore ZIRA →
+        </a>
+        <a class="btn secondary" href="#risk-analyzer">
+          Risk Analysis Lab
+        </a>
+      </div>
+
+      <div class="notice">
+        <strong>Development status:</strong>
+        ZIRA's intended mission and areas of focus
+        have been established. Its operational
+        capabilities, services, and infrastructure
+        remain under development.
+      </div>
+
+    </div>
+
+    <div id="zira-mission">
+
+      <p class="eyebrow">ZIRA Mission</p>
+
+      <h2>
+        Intelligence With
+        <span class="accent">Responsibility.</span>
+      </h2>
+
+      <p class="lead">
+        ZIRA is being developed to explore methods
+        for understanding technical risks,
+        organizing information, evaluating evidence,
+        and supporting informed human decisions.
+      </p>
+
+      <p>
+        Its intended approach prioritizes
+        authorization, security, privacy,
+        transparency, careful analysis,
+        and human accountability.
+      </p>
+
+    </div>
+
+    <div class="grid">
+
+      <article class="card">
+        <div class="card-icon">⌕</div>
+        <h3>Intelligence Analysis</h3>
+        <p>
+          Exploring responsible ways to examine
+          information, recognize patterns,
+          distinguish verified facts from
+          assumptions, and document findings.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-icon">◇</div>
+        <h3>Risk Analysis</h3>
+        <p>
+          Researching ways to identify
+          vulnerabilities, consider uncertainties,
+          and evaluate possible technical risks.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-icon">⌘</div>
+        <h3>Cybersecurity Research</h3>
+        <p>
+          Exploring defensive cybersecurity,
+          responsible technical incident analysis,
+          and infrastructure protection concepts.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-icon">▤</div>
+        <h3>Infrastructure Resilience</h3>
+        <p>
+          Studying how organizations could
+          strengthen systems, prepare for
+          disruptions, and improve awareness.
+        </p>
+      </article>
+
+    </div>
+
+    <!-- ZIRA INTERACTIVE RISK ANALYZER -->
+
+    <div id="risk-analyzer" style="margin-top:65px">
+
+      <p class="eyebrow">ZIRA Research Lab</p>
+
+      <h2>
+        Risk Analysis
+        <span class="accent">Simulator.</span>
+      </h2>
+
+      <p class="lead">
+        An educational demonstration of how a
+        risk assessment might use likelihood
+        and impact estimates.
+      </p>
+
+      <div class="sim-layout">
+
+        <div class="control-panel">
+
+          <h3>Assessment Inputs</h3>
+
+          <label for="riskCategory">
+            Risk Domain
+          </label>
+
+          <select id="riskCategory">
+            <option value="Cybersecurity">
+              Cybersecurity
+            </option>
+            <option value="Infrastructure">
+              Infrastructure
+            </option>
+            <option value="Communications">
+              Communications
+            </option>
+            <option value="Information Integrity">
+              Information Integrity
+            </option>
+          </select>
+
+          <label for="likelihood">
+            Hypothetical Likelihood:
+            <strong id="likelihoodValue">3</strong>/5
+          </label>
+
+          <input
+            id="likelihood"
+            type="range"
+            min="1"
+            max="5"
+            value="3"
+          >
+
+          <label for="impact">
+            Hypothetical Impact:
+            <strong id="impactValue">3</strong>/5
+          </label>
+
+          <input
+            id="impact"
+            type="range"
+            min="1"
+            max="5"
+            value="3"
+          >
+
+          <button class="btn primary" id="analyzeRisk">
+            Analyze Scenario →
+          </button>
+
+        </div>
+
+        <div class="sim-result">
+
+          <span class="tag demo">
+            ILLUSTRATIVE MODEL
+          </span>
+
+          <p class="muted">
+            Sample Risk Score
+          </p>
+
+          <div class="big-score" id="riskScore">
+            --
+          </div>
+
+          <h3 id="riskLevel">
+            Awaiting Analysis
+          </h3>
+
+          <div class="progress">
+            <div
+              class="progress-fill"
+              id="riskBar"
+            ></div>
+          </div>
+
+          <p class="muted" id="riskExplanation">
+            Enter hypothetical values and
+            generate an assessment.
+          </p>
+
+          <p class="small muted">
+            This simplified scoring model is
+            educational and is not a validated
+            professional risk assessment.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ZIRA PRINCIPLES -->
+
+    <div style="margin-top:70px">
+
+      <p class="eyebrow">
+        ZIRA Operating Philosophy
+      </p>
+
+      <h2>
+        Responsible
+        <span class="accent">Intelligence.</span>
+      </h2>
+
+      <div class="grid">
+
+        <div class="card">
+          <h3>Human Accountability</h3>
+          <p>
+            Important decisions require
+            responsible people, appropriate
+            judgment, and verification.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Privacy &amp; Security</h3>
+          <p>
+            Research and future activities
+            should respect privacy, protect
+            sensitive information, and use
+            appropriate safeguards.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Evidence-Based Analysis</h3>
+          <p>
+            Findings should clearly distinguish
+            evidence, preliminary assessments,
+            limitations, and uncertainty.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Responsible Boundaries</h3>
+          <p>
+            Future work must follow applicable
+            laws, permissions, and ethical
+            responsibilities.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="notice">
+        <strong>Independence notice:</strong>
+        ZIRA is not a government agency, does
+        not claim law-enforcement authority,
+        and is not affiliated with the FBI
+        or any government organization.
+        No active investigations or operational
+        intelligence services are implied.
+      </div>
+
+    </div>
+
+    <!-- ZIRA DEVELOPMENT -->
+
+    <div style="margin-top:65px">
+
+      <p class="eyebrow">
+        ZIRA Development Roadmap
+      </p>
+
+      <h2>
+        Building the
+        <span class="accent">Foundation.</span>
+      </h2>
+
+      <div class="grid">
+
+        <div class="card">
+          <span class="tag current">
+            EARLY DEVELOPMENT
+          </span>
+          <h3>Mission Definition</h3>
+          <p>
+            Defining the division's purpose,
+            intended scope, guiding principles,
+            and appropriate boundaries.
+          </p>
+        </div>
+
+        <div class="card">
+          <span class="tag">PLANNED</span>
+          <h3>Research &amp; Feasibility</h3>
+          <p>
+            Evaluating technical ideas,
+            requirements, resources,
+            and possible limitations.
+          </p>
+        </div>
+
+        <div class="card">
+          <span class="tag">PLANNED</span>
+          <h3>Validation &amp; Safeguards</h3>
+          <p>
+            Developing appropriate evaluation
+            methods, privacy protections,
+            and human review procedures.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- WELL-BEING -->
+
+<section id="wellbeing">
+  <div class="container">
+
+    <p class="eyebrow">
+      Beyond Technology
+    </p>
+
+    <h2>
+      Humanity Is Part
+      <span class="accent">Of Our Mission.</span>
+    </h2>
+
+    <p class="lead">
+      Zen's vision includes supporting mental
+      well-being and stronger communities,
+      both with technology and without it.
+    </p>
+
+    <p>
+      Technology alone cannot solve every challenge.
+      Listening, compassion, human connection,
+      and practical support remain important.
+    </p>
+
+    <div class="grid">
+
+      <div class="card">
+        <div class="card-icon">♡</div>
+        <h3>Mental Health Awareness</h3>
+        <p>
+          Exploring ways to encourage open
+          conversations, understanding,
+          and reduced stigma.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">◉</div>
+        <h3>Community Connection</h3>
+        <p>
+          Supporting the idea that meaningful
+          communities are built through
+          care, communication, and support.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">✦</div>
+        <h3>Human-Centered Innovation</h3>
+        <p>
+          Considering people's well-being
+          and lived experiences during
+          the design of future technology.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="notice">
+      Zen's well-being initiatives are an
+      intended area of development.
+      This website does not provide
+      professional mental health care
+      or emergency assistance.
+    </div>
+
+  </div>
+</section>
+
+<!-- ROADMAP -->
+
+<section id="roadmap">
+  <div class="container">
+
+    <p class="eyebrow">
+      The Road Ahead
+    </p>
+
+    <h2>
+      Building Toward
+      <span class="accent">Tomorrow.</span>
+    </h2>
+
+    <p class="lead">
+      Zen's roadmap outlines its development
+      direction without promising specific
+      launch dates or outcomes.
+    </p>
+
+    <div class="timeline">
+
+      <div class="timeline-item card">
+        <span class="tag current">
+          CURRENT DIRECTION
+        </span>
+        <h3>01 — Establish the Foundation</h3>
+        <p>
+          Clarify the mission, project
+          priorities, technical requirements,
+          and organizational goals.
+        </p>
+      </div>
+
+      <div class="timeline-item card">
+        <span class="tag demo">
+          PROTOTYPE EXPLORATION
+        </span>
+        <h3>02 — Research &amp; Develop</h3>
+        <p>
+          Build educational demonstrations,
+          explore feasible technologies,
+          and improve early concepts.
+        </p>
+      </div>
+
+      <div class="timeline-item card">
+        <span class="tag">PLANNED</span>
+        <h3>03 — Validate &amp; Improve</h3>
+        <p>
+          Explore appropriate testing,
+          usability, security reviews,
+          and responsible design practices.
+        </p>
+      </div>
+
+      <div class="timeline-item card">
+        <span class="tag">FUTURE POSSIBILITY</span>
+        <h3>04 — Develop Partnerships</h3>
+        <p>
+          Consider potential collaborations
+          with qualified professionals,
+          organizations, and communities.
+        </p>
+      </div>
+
+      <div class="timeline-item card">
+        <span class="tag">LONG-TERM VISION</span>
+        <h3>05 — Explore Real-World Applications</h3>
+        <p>
+          Assess whether mature,
+          appropriately tested projects
+          could responsibly be implemented.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ZEN INSIDER -->
+
+<section id="insider">
+  <div class="container">
+
+    <div class="newsletter">
+
+      <p class="eyebrow">
+        Stay Connected
+      </p>
+
+      <h2>
+        Introducing
+        <span class="accent">Zen Insider.</span>
+      </h2>
+
+      <p class="lead">
+        Zen Insider is a planned email update
+        program intended to share project
+        announcements, research updates,
+        development news, and important milestones.
+      </p>
+
+      <span class="tag">
+        SUBSCRIPTIONS NOT ACTIVE YET
+      </span>
+
+      <form id="newsletterForm">
+
+        <div class="newsletter-fields">
+
+          <input
+            type="email"
+            id="newsletterEmail"
+            placeholder="Your email address"
+            aria-label="Email address"
+            required
+          >
+
+          <button class="btn primary" type="submit">
+            Preview Signup
+          </button>
+
+        </div>
+
+      </form>
+
+      <p id="newsletterMessage" role="status" aria-live="polite"></p>
+
+      <p class="small muted">
+        This form is only a demonstration.
+        It does not transmit or store your
+        email address. An authorized
+        subscription service would be
+        required before real signups begin.
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ -->
+
+<section id="faq">
+  <div class="container">
+
+    <p class="eyebrow">
+      Frequently Asked Questions
+    </p>
+
+    <h2>
+      Understanding
+      <span class="accent">Zen.</span>
+    </h2>
+
+    <details>
+      <summary>
+        What is Zen Infrastructure Technologies?
+      </summary>
+      <p>
+        Zen is an early-stage initiative
+        exploring infrastructure innovation,
+        responsible technology, cybersecurity,
+        community well-being, and safer systems.
+      </p>
+    </details>
+
+    <details>
+      <summary>
+        Is Zen currently a fully operational company?
+      </summary>
+      <p>
+        Zen is in an early research and
+        development stage. Descriptions
+        of planned projects should not
+        be interpreted as existing
+        operational services.
+      </p>
+    </details>
+
+    <details>
+      <summary>
+        What is ZIRA?
+      </summary>
+      <p>
+        ZIRA stands for Zen Intelligence
+        &amp; Risk Analysis. It is a planned
+        division focused on responsible
+        information analysis, cybersecurity
+        research, technical risks,
+        and infrastructure resilience.
+      </p>
+    </details>
+
+    <details>
+      <summary>
+        Does ZIRA conduct real investigations?
+      </summary>
+      <p>
+        No operational investigative
+        activities are represented by
+        this website. ZIRA is currently
+        described as a planned division.
+      </p>
+    </details>
+
+    <details>
+      <summary>
+        Does Zen use artificial intelligence?
+      </summary>
+      <p>
+        Zen is not an AI-only initiative.
+        Its philosophy is that technology,
+        including potential AI tools,
+        should support human judgment,
+        verification, and accountability.
+      </p>
+    </details>
+
+    <details>
+      <summary>
+        Are the dashboards connected to real cities?
+      </summary>
+      <p>
+        No. The interactive dashboards
+        and simulators use illustrative
+        scenarios and do not connect
+        to real infrastructure networks.
+      </p>
+    </details>
+
+    <details>
+      <summary>
+        How can I follow Zen's development?
+      </summary>
+      <p>
+        Updates may be shared through
+        the official website and future
+        communication channels.
+        Zen Insider is planned but not
+        currently accepting subscriptions.
+      </p>
+    </details>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+  <div class="container">
+
+    <p class="eyebrow">
+      Communication &amp; Transparency
+    </p>
+
+    <h2>
+      Connect With
+      <span class="accent">The Vision.</span>
+    </h2>
+
+    <p class="lead">
+      Zen Infrastructure Technologies
+      is focused on building a foundation
+      for responsible future development.
+    </p>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>Official Contact</h3>
+        <p>
+          Public business contact
+          information will be added
+          when an official communication
+          channel is ready.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Project Updates</h3>
+        <p>
+          Follow the website's development
+          roadmap and future announcements
+          for progress updates.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Collaboration</h3>
+        <p>
+          Future collaboration possibilities
+          may be explored as Zen develops.
+          No current partnerships or
+          openings are implied.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
 </main>
 
+<!-- FOOTER -->
+
 <footer>
-  <div class="wrap">
-    <p><strong>ZEN INFRASTRUCTURE TECHNOLOGIES</strong></p>
-    <p>Secure Cities. Smart Future.</p>
-    <p>
-      <a href="index.html">Main Website</a>
-      <a href="#mission">ZIRA Mission</a>
-      <a href="#focus">Research Areas</a>
-      <a href="#status">Development Status</a>
+  <div class="container">
+
+    <div class="brand">
+      <span class="brand-logo">Z</span>
+      <span class="brand-name">
+        ZEN
+        <span>Infrastructure Technologies</span>
+      </span>
+    </div>
+
+    <h3 style="margin-top:25px">
+      Secure Cities.
+      <span class="accent">Smart Future.</span>
+    </h3>
+
+    <p class="muted">
+      Exploring the future of infrastructure,
+      technology, safety, and humanity.
     </p>
-    <p>
-      ZIRA is a planned division in early-stage development.
-      Its intended capabilities are not necessarily operational.
+
+    <div class="footer-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#projects">Projects</a>
+      <a href="#zira">ZIRA</a>
+      <a href="#wellbeing">Well-being</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <p class="small muted">
+      ZIRA is a planned division of
+      Zen Infrastructure Technologies.
+      Neither Zen nor ZIRA claims
+      governmental or law-enforcement authority.
     </p>
-    <p>© <span id="year"></span> Zen Infrastructure Technologies</p>
+
+    <p class="small muted">
+      Website demonstrations are simulated
+      and do not represent deployed
+      public safety services.
+    </p>
+
+    <p class="small muted">
+      © <span id="year"></span>
+      Zen Infrastructure Technologies.
+      All rights reserved.
+    </p>
+
   </div>
 </footer>
 
+<!-- JAVASCRIPT -->
+
 <script>
-document.getElementById("year").textContent = new Date().getFullYear();
+"use strict";
+
+/* COPYRIGHT YEAR */
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+/* MOBILE NAVIGATION */
+
+const menuButton =
+  document.getElementById("menuButton");
+
+const navlinks =
+  document.getElementById("navlinks");
+
+menuButton.addEventListener("click", function () {
+  const isOpen = navlinks.classList.toggle("open");
+
+  menuButton.setAttribute(
+    "aria-expanded",
+    String(isOpen)
+  );
+
+  menuButton.textContent =
+    isOpen ? "✕ Close" : "☰ Menu";
+});
+
+navlinks.querySelectorAll("a").forEach(function (link) {
+  link.addEventListener("click", function () {
+    navlinks.classList.remove("open");
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.textContent = "☰ Menu";
+  });
+});
+
+/* PROJECT EXPLORER */
+
+const projects = [
+  {
+    title: "Connected City Simulator",
+    type: "Demo",
+    description:
+      "An interactive fictional infrastructure simulation exploring system stress and illustrative stability.",
+    link: "#simulator"
+  },
+  {
+    title: "Human Oversight Workflow",
+    type: "Demo",
+    description:
+      "A demonstration of how human review and accountability may fit into technology-assisted decision processes.",
+    link: "#oversight"
+  },
+  {
+    title: "ZIRA — Intelligence & Risk Analysis",
+    type: "Planned",
+    description:
+      "A planned division exploring intelligence analysis, cybersecurity research, technical risks, and infrastructure resilience.",
+    link: "#zira"
+  },
+  {
+    title: "Cybersecurity Concepts",
+    type: "Research",
+    description:
+      "Research into defensive security principles, system protection, and technical risk awareness.",
+    link: "#zira"
+  },
+  {
+    title: "Infrastructure Resilience",
+    type: "Research",
+    description:
+      "Exploring concepts that may help communities understand infrastructure challenges and potential improvements.",
+    link: "#about"
+  },
+  {
+    title: "Community Well-being",
+    type: "Planned",
+    description:
+      "Exploring initiatives that support mental well-being, human connection, and communities with and without technology.",
+    link: "#wellbeing"
+  },
+  {
+    title: "Zen Insider",
+    type: "Planned",
+    description:
+      "A future project-update program for development news, progress reports, and important announcements.",
+    link: "#insider"
+  },
+  {
+    title: "Risk Analysis Lab",
+    type: "Demo",
+    description:
+      "A simplified educational risk-scoring model within the ZIRA section.",
+    link: "#risk-analyzer"
+  }
+];
+
+const projectGrid =
+  document.getElementById("projectGrid");
+
+function showProjects(filter) {
+  projectGrid.innerHTML = "";
+
+  projects
+    .filter(function (project) {
+      return filter === "All" || project.type === filter;
+    })
+    .forEach(function (project) {
+      const card = document.createElement("article");
+      card.className = "card";
+
+      const status = document.createElement("span");
+      status.className =
+        "tag " + (
+          project.type === "Demo" ? "demo" : ""
+        );
+
+      status.textContent =
+        project.type.toUpperCase();
+
+      const title = document.createElement("h3");
+      title.textContent = project.title;
+
+      const description = document.createElement("p");
+      description.textContent = project.description;
+
+      const link = document.createElement("a");
+      link.href = project.link;
+      link.textContent = "Explore →";
+      link.className = "project-extra";
+
+      card.append(status, title, description, link);
+      projectGrid.appendChild(card);
+    });
+}
+
+document.querySelectorAll("[data-filter]").forEach(function (button) {
+  button.addEventListener("click", function () {
+    document.querySelectorAll("[data-filter]").forEach(function (b) {
+      b.classList.remove("active");
+      b.setAttribute("aria-pressed", "false");
+    });
+
+    button.classList.add("active");
+    button.setAttribute("aria-pressed", "true");
+
+    showProjects(button.dataset.filter);
+  });
+});
+
+showProjects("All");
+
+/* INFRASTRUCTURE SIMULATOR */
+
+const intensity =
+  document.getElementById("intensity");
+
+const intensityValue =
+  document.getElementById("intensityValue");
+
+intensity.addEventListener("input", function () {
+  intensityValue.textContent =
+    intensity.value + "%";
+});
+
+const scenarioData = {
+  traffic: {
+    name: "Transportation Network",
+    description:
+      "This fictional model explores traffic demand, congestion, and system capacity.",
+    recommendation:
+      "Illustrative next step: review transportation assumptions and seek qualified human analysis."
+  },
+
+  power: {
+    name: "Electrical Distribution",
+    description:
+      "This fictional model explores electrical load and possible network stress.",
+    recommendation:
+      "Illustrative next step: have an authorized professional verify load assumptions."
+  },
+
+  water: {
+    name: "Water Infrastructure",
+    description:
+      "This fictional model explores pressure variation and distribution stability.",
+    recommendation:
+      "Illustrative next step: verify hypothetical sensor readings before drawing conclusions."
+  },
+
+  communication: {
+    name: "Communication Network",
+    description:
+      "This fictional model explores demand on an illustrative communications network.",
+    recommendation:
+      "Illustrative next step: consider redundancy and obtain qualified technical review."
+  }
+};
+
+document.getElementById("runSimulation")
+  .addEventListener("click", function () {
+
+    const system =
+      document.getElementById("scenario").value;
+
+    const stress = Number(intensity.value);
+
+    const selected = scenarioData[system];
+
+    const stability = Math.max(
+      0,
+      Math.min(100, 100 - Math.round(stress * .78))
+    );
+
+    document.getElementById("stabilityScore")
+      .textContent = stability + "/100";
+
+    document.getElementById("stabilityBar")
+      .style.width = stability + "%";
+
+    document.getElementById("stabilityBar")
+      .style.background =
+        stability < 40
+          ? "var(--red)"
+          : stability < 70
+          ? "var(--warning)"
+          : "var(--green)";
+
+    document.getElementById("simulationTitle")
+      .textContent = selected.name;
+
+    document.getElementById("simulationDescription")
+      .textContent =
+        selected.description +
+        " Modeled stress: " + stress + "%.";
+
+    document.getElementById("simulationRecommendation")
+      .textContent = selected.recommendation;
+
+    document.getElementById("dashboardTerminal")
+      .textContent =
+        "ZEN SYSTEMS // SIMULATION REPORT\n" +
+        "----------------------------------------\n" +
+        "Scenario: " + selected.name + "\n" +
+        "Modeled stress: " + stress + "%\n" +
+        "Illustrative stability: " + stability + "/100\n" +
+        "Live data connection: NONE\n" +
+        "Action taken on infrastructure: NONE\n" +
+        "Human review required for real-world action.\n" +
+        "----------------------------------------\n" +
+        "SIMULATION COMPLETE";
+  });
+
+/* HUMAN OVERSIGHT WORKFLOW */
+
+const generateAlert =
+  document.getElementById("generateAlert");
+
+const reviewAlert =
+  document.getElementById("reviewAlert");
+
+const dismissAlert =
+  document.getElementById("dismissAlert");
+
+const alertStatus =
+  document.getElementById("alertStatus");
+
+const alertDescription =
+  document.getElementById("alertDescription");
+
+const oversightLog =
+  document.getElementById("oversightLog");
+
+let alertNumber = 0;
+let pendingAlert = false;
+
+generateAlert.addEventListener("click", function () {
+  alertNumber++;
+  pendingAlert = true;
+
+  alertStatus.textContent =
+    "PENDING HUMAN REVIEW";
+
+  alertDescription.textContent =
+    "A fictional infrastructure anomaly has been flagged. " +
+    "No automated operational action has occurred.";
+
+  oversightLog.textContent =
+    "ZEN OVERSIGHT // DEMO ALERT\n" +
+    "----------------------------------------\n" +
+    "Alert ID: DEMO-" + String(alertNumber).padStart(3, "0") + "\n" +
+    "Source: SIMULATED\n" +
+    "Issue: Hypothetical infrastructure anomaly\n" +
+    "Status: AWAITING REVIEW\n" +
+    "External action: NONE";
+
+  reviewAlert.disabled = false;
+  dismissAlert.disabled = false;
+  generateAlert.disabled = true;
+});
+
+function finishAlert(escalate) {
+  if (!pendingAlert) return;
+
+  pendingAlert = false;
+
+  alertStatus.textContent =
+    escalate
+      ? "REVIEWED — FURTHER ANALYSIS REQUESTED"
+      : "REVIEWED — ALERT DISMISSED";
+
+  alertDescription.textContent =
+    escalate
+      ? "A simulated human reviewer chose to request further investigation."
+      : "A simulated human reviewer chose to dismiss the sample alert.";
+
+  oversightLog.textContent +=
+    "\n----------------------------------------\n" +
+    "Human decision: " +
+    (escalate ? "ESCALATE FOR REVIEW" : "DISMISS") +
+    "\nExternal action: NONE\n" +
+    "WORKFLOW COMPLETE";
+
+  reviewAlert.disabled = true;
+  dismissAlert.disabled = true;
+  generateAlert.disabled = false;
+}
+
+reviewAlert.addEventListener("click", function () {
+  finishAlert(true);
+});
+
+dismissAlert.addEventListener("click", function () {
+  finishAlert(false);
+});
+
+/* ZIRA RISK ANALYZER */
+
+const likelihood =
+  document.getElementById("likelihood");
+
+const impact =
+  document.getElementById("impact");
+
+likelihood.addEventListener("input", function () {
+  document.getElementById("likelihoodValue")
+    .textContent = likelihood.value;
+});
+
+impact.addEventListener("input", function () {
+  document.getElementById("impactValue")
+    .textContent = impact.value;
+});
+
+document.getElementById("analyzeRisk")
+  .addEventListener("click", function () {
+
+    const l = Number(likelihood.value);
+    const i = Number(impact.value);
+
+    const domain =
+      document.getElementById("riskCategory").value;
+
+    const score = l * i;
+    const percentage = (score / 25) * 100;
+
+    let level;
+    let color;
+    let explanation;
+
+    if (score <= 5) {
+      level = "Lower Modeled Risk";
+      color = "var(--green)";
+      explanation =
+        "The chosen hypothetical values produce a lower score under this simplified model.";
+    } else if (score <= 14) {
+      level = "Moderate Modeled Risk";
+      color = "var(--warning)";
+      explanation =
+        "The chosen values suggest a moderate priority for additional review in this demonstration.";
+    } else {
+      level = "Higher Modeled Risk";
+      color = "var(--red)";
+      explanation =
+        "The chosen values produce a higher illustrative priority. Real-world assessment would require evidence, context, and qualified analysis.";
+    }
+
+    document.getElementById("riskScore")
+      .textContent = score + "/25";
+
+    document.getElementById("riskBar")
+      .style.width = percentage + "%";
+
+    document.getElementById("riskBar")
+      .style.background = color;
+
+    document.getElementById("riskLevel")
+      .textContent = level;
+
+    document.getElementById("riskExplanation")
+      .textContent =
+        "Domain: " + domain + ". " +
+        explanation +
+        " This is not an operational assessment.";
+  });
+
+/* NEWSLETTER DEMONSTRATION */
+
+document.getElementById("newsletterForm")
+  .addEventListener("submit", function (event) {
+
+    event.preventDefault();
+
+    document.getElementById("newsletterMessage")
+      .textContent =
+        "Zen Insider is not accepting subscriptions yet. " +
+        "Your email was not sent or saved.";
+
+    document.getElementById("newsletterForm").reset();
+  });
+
 </script>
+
 </body>
 </html>
