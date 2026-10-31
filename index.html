@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#090b12">
 
-  <title>Maintenance | Zen Infrastructure Technologies</title>
+  <title>Website Maintenance | Zen Infrastructure Technologies</title>
 
   <style>
     * {
@@ -18,11 +18,11 @@
     body {
       min-height: 100vh;
       background: #090b12;
-      color: #fff;
-      font-family: Arial, sans-serif;
+      color: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       text-align: center;
       padding: 24px;
       overflow-x: hidden;
@@ -33,24 +33,24 @@
       position: fixed;
       width: 500px;
       height: 500px;
+      top: -200px;
+      right: -200px;
       background: #e11d48;
       opacity: 0.12;
       filter: blur(130px);
       border-radius: 50%;
-      top: -200px;
-      right: -200px;
       pointer-events: none;
     }
 
     .container {
       position: relative;
-      max-width: 650px;
       width: 100%;
+      max-width: 650px;
       padding: 45px 25px;
-      background: rgba(18, 22, 34, 0.9);
+      background: rgba(18, 22, 34, 0.95);
       border: 1px solid #37333e;
       border-radius: 20px;
-      box-shadow: 0 0 70px rgba(225, 29, 72, 0.1);
+      box-shadow: 0 0 70px rgba(225, 29, 72, 0.12);
     }
 
     .logo {
@@ -74,13 +74,14 @@
       color: #cbd0dc;
       margin-bottom: 35px;
       font-weight: bold;
+      text-transform: uppercase;
     }
 
     .status {
       display: inline-block;
-      color: #ff5b74;
-      border: 1px solid #743646;
+      color: #ff657f;
       background: rgba(255, 53, 91, 0.08);
+      border: 1px solid #743646;
       padding: 9px 17px;
       border-radius: 50px;
       font-size: 12px;
@@ -88,9 +89,25 @@
       margin-bottom: 25px;
     }
 
+    .status-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      margin-right: 6px;
+      background: #ff355b;
+      border-radius: 50%;
+      animation: pulse 1.6s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
     h1 {
       font-size: clamp(32px, 6vw, 48px);
       margin-bottom: 20px;
+      line-height: 1.2;
     }
 
     h1 span {
@@ -101,7 +118,35 @@
       color: #aeb6c6;
       line-height: 1.8;
       font-size: 16px;
+      margin-bottom: 25px;
+    }
+
+    .launch {
       margin-bottom: 30px;
+      padding: 18px;
+      background: rgba(255, 53, 91, 0.06);
+      border: 1px solid #5c2938;
+      border-radius: 12px;
+    }
+
+    .launch-label {
+      color: #adb6c5;
+      font-size: 12px;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .launch-date {
+      color: #ff657f;
+      font-size: clamp(22px, 5vw, 30px);
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .launch-note {
+      color: #97a0af;
+      font-size: 12px;
+      line-height: 1.6;
     }
 
     .info {
@@ -117,7 +162,7 @@
       display: flex;
       justify-content: space-between;
       gap: 16px;
-      margin: 10px 0;
+      margin: 12px 0;
       font-size: 14px;
     }
 
@@ -126,12 +171,12 @@
     }
 
     .info-row span:last-child {
-      color: #fff;
+      color: #ffffff;
       text-align: right;
     }
 
     .red {
-      color: #ff5b74 !important;
+      color: #ff657f !important;
     }
 
     .progress {
@@ -156,7 +201,7 @@
     }
 
     .motto {
-      color: #fff;
+      color: #ffffff;
       font-weight: bold;
       letter-spacing: 2px;
       font-size: 13px;
@@ -166,6 +211,7 @@
       margin-top: 25px;
       color: #737d90;
       font-size: 12px;
+      line-height: 1.6;
     }
 
     @media (max-width: 480px) {
@@ -182,6 +228,13 @@
         font-size: 12px;
       }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      .status-dot,
+      .progress-bar {
+        animation: none;
+      }
+    }
   </style>
 </head>
 
@@ -192,11 +245,12 @@
     <div class="logo">Z</div>
 
     <div class="company">
-      ZEN INFRASTRUCTURE TECHNOLOGIES
+      Zen Infrastructure Technologies
     </div>
 
     <div class="status">
-      ● WEBSITE MAINTENANCE
+      <span class="status-dot"></span>
+      WEBSITE UNDER MAINTENANCE
     </div>
 
     <h1>
@@ -206,18 +260,30 @@
     <p class="description">
       Zen Infrastructure Technologies is currently
       performing website maintenance and preparing
-      a new online experience.
-
+      a new and improved online experience.
       <br><br>
-
-      Our website is temporarily unavailable while
-      we work behind the scenes to bring you
-      something better.
-
+      We're working behind the scenes to improve
+      our website and prepare for the next stage
+      of development.
       <br><br>
-
       Thank you for your patience and continued support.
     </p>
+
+    <section class="launch">
+      <div class="launch-label">
+        ESTIMATED WEBSITE RETURN
+      </div>
+
+      <div class="launch-date">
+        December 5, 2026
+      </div>
+
+      <div class="launch-note">
+        Approximately five weeks from October 31, 2026.
+        This is an estimated date and may change
+        depending on development progress.
+      </div>
+    </section>
 
     <div class="info">
 
@@ -233,7 +299,12 @@
 
       <div class="info-row">
         <span>Estimated Return</span>
-        <span>To Be Announced</span>
+        <span>December 5, 2026</span>
+      </div>
+
+      <div class="info-row">
+        <span>Timeline</span>
+        <span>Approximately 5 Weeks</span>
       </div>
 
     </div>
@@ -247,8 +318,10 @@
     </div>
 
     <footer>
-      © 2026 Zen Infrastructure Technologies.
+      &copy; 2026 Zen Infrastructure Technologies.
       All Rights Reserved.
+      <br>
+      Website redesign and maintenance in progress.
     </footer>
 
   </main>
